@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mi Negocio de Software</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <!-- Logo superior -->
+    <section class="logo-section">
+        <img src="img/logowgcomputer3.png" alt="Logo de Mi Negocio" class="logo"/>
+    </section>
+
+    <!-- Menú de navegación -->
+    <header class="main-header">
+        <div class="header-content">
+            <img src="img/logowgcomputer3.png" alt="Logo de Mi Negocio" class="logo" onclick="location.href='index.html'">
+            
+            <nav class="main-nav">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+
+                <!-- Menú desplegable -->
+                <div class="dropdown">
+                    <a class="dropbtn">Nosotros</a>
+                    <div class="dropdown-content">
+                        <a href="historia.html">Historia</a>
+                        <a href="mision-vision.html">Misión - Visión</a>
+                    </div>
+                </div>
+
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <h1>Bienvenido a WYG Computer</h1>
+        <p>Desarrollamos soluciones innovadoras para tus necesidades tecnológicas.</p>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="service">
+            <img src="img/servicio1.jpg" alt="Desarrollo Web" />
+            <h3>Desarrollo Web</h3>
+            <p>Creación de sitios web modernos y funcionales.</p>
+        </div>
+        <div class="service">
+            <img src="img/servicio2.jpg" alt="Aplicaciones Móviles" />
+            <h3>Aplicaciones Móviles</h3>
+            <p>Desarrollo de apps intuitivas y eficientes.</p>
+        </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros" class="about">
+        <h2>Socio Comerciales</h2>
+    <!-- Galeria de imagenes -->
+     <div class="gallery">
+        <img src="img/img1.png" alt="Imagen 1">
+        <img src="img/img2.png" alt="Imagen 2">
+        <img src="img/img3.jpg" alt="Imagen 3">
+        <img src="img/img4.png" alt="Imagen 4">
+        <img src="img/img5.png" alt="Imagen 5">
+        <img src="img/img6.png" alt="Imagen 6">
+        <img src="img/img7.png" alt="Imagen 7">
+        <img src="img/img8.png" alt="Imagen 8">
+        <img src="img/img9.png" alt="Imagen 9">
+        <img src="img/img10.png" alt="Imagen 10">
+        <img src="img/img11.png" alt="Imagen 11">
+        <img src="img/img12.jpg" alt="Imagen 12">
+        <img src="img/img13.png" alt="Imagen 13">
+        <img src="img/img14.png" alt="Imagen 14">
+        <img src="img/img15.png" alt="Imagen 15">
+        <img src="img/img16.png" alt="Imagen 16">
+     </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact">
+        <h2>Contacto</h2>
+        <p>Escríbenos a <a href="mailto:contacto@minegocio.com">contacto@minegocio.com</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; W&G Computer S.A. 2025. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Fondo que cambia -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = ["img/fondo1.png", "img/fondo2.jpg", "img/fondo3.jpg"];
+            let currentIndex = 0;
+            const heroSection = document.querySelector(".hero");
+
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+
+            function changeBackground() {
+                heroSection.style.backgroundImage = `url('${images[currentIndex]}')`;
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+
+            changeBackground();
+            setInterval(changeBackground, 5000);
+        });
+    </script>
+</body>
+</html>
+
