@@ -20,7 +20,17 @@
       <!--Menu principal-->
       <nav class="main-nav">
         <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
+        <!--Menu desplegable servicios-->
+        <div class="dropdown">
+          <a class="dropbtn">Servicios</a>
+          <div class="dropdown-content">
+            <a href="#servicios">Todos los Servicios</a>
+            <a href="#cas">Servicio de CAS</a>
+            <a href="#consultoria">Consultoría de Sistemas</a>
+            <a href="#cableado">Cableado Estructurado</a>
+            <a href="#datacenter">Data Center</a>
+          </div>
+        </div>
         <!--Menu desplegable nosotros-->
         <div class="dropdown">
           <a class="dropbtn">Nosotros</a>
@@ -36,54 +46,48 @@
 
   <!-- Hero con filtro -->
   <section id="inicio" class="hero">
-    <!--Capa de filtro en el fondo-->
+      <!--Capa de filtro en el fondo-->
     <div class="hero-overlay"></div>
     <h1>Bienvenido a WYG Computer</h1>
     <p>Desarrollamos soluciones innovadoras para tus necesidades tecnológicas.</p>
   </section>
 
-  <!-- Servicios -->
+   <!-- Servicios -->
   <section id="servicios" class="services">
     <h2>Nuestros Servicios</h2>
-    <div class="service">
-      <img src="img/servicio1.jpg" alt="Servicio de CAS" />
-      <h3>Servicio de CAS</h3>
-      <p>Creación de sitios web modernos y funcionales adaptados a sus necesidades empresariales.</p>
-    </div>
-    <div class="service">
-      <img src="img/servicio2.jpg" alt="Consultoría de Sistemas" />
-      <h3>Consultoría de Sistemas</h3>
-      <p>Asesoramiento experto para optimizar sus sistemas informáticos y mejorar la eficiencia operativa.</p>
-    </div>
-    <div class="service">
-      <img src="img/servicio2.jpg" alt="Cableado Estructurado" />
-      <h3>Cableado Estructurado</h3>
-      <p>Instalación profesional de sistemas de cableado para redes de comunicación confiables y escalables.</p>
-    </div>
-    <div class="service">
-      <img src="img/servicio2.jpg" alt="Data Center" />
-      <h3>Data Center</h3>
-      <p>Soluciones integrales para centros de datos que garantizan máxima disponibilidad y seguridad.</p>
-    </div>
-    <div class="service">
-      <img src="img/servicio2.jpg" alt="Sistema de Seguridad" />
-      <h3>Sistema de Seguridad</h3>
-      <p>Implementación de sistemas avanzados para proteger la integridad de su infraestructura digital.</p>
-    </div>
-    <div class="service">
-      <img src="img/servicio2.jpg" alt="Sistema Eléctrico" />
-      <h3>Sistema Eléctrico</h3>
-      <p>Instalaciones eléctricas especializadas para entornos informáticos con respaldo y protección.</p>
-    </div>
-    <div class="service">
-      <img src="img/servicio2.jpg" alt="Infraestructura Informática" />
-      <h3>Soluciones de Infraestructura Informática</h3>
-      <p>Diseño e implementación de infraestructuras robustas adaptadas a las necesidades de su empresa.</p>
-    </div>
-    <div class="service">
-      <img src="img/servicio2.jpg" alt="Respaldo y Contingencia" />
-      <h3>Soluciones de respaldo, contingencia y continuidad de negocio</h3>
-      <p>Estrategias y sistemas para garantizar la operatividad continua de su negocio ante cualquier eventualidad.</p>
+    <div class="services-grid">
+      <div class="service" id="cas">
+        <h3>Servicio de CAS</h3>
+        <p>Creación de sitios web modernos y funcionales adaptados a sus necesidades empresariales.</p>
+      </div>
+      <div class="service" id="consultoria">
+        <h3>Consultoría de Sistemas</h3>
+        <p>Asesoramiento experto para optimizar sus sistemas informáticos y mejorar la eficiencia operativa.</p>
+      </div>
+      <div class="service" id="cableado">
+        <h3>Cableado Estructurado</h3>
+        <p>Instalación profesional de sistemas de cableado para redes de comunicación confiables y escalables.</p>
+      </div>
+      <div class="service" id="datacenter">
+        <h3>Data Center</h3>
+        <p>Soluciones integrales para centros de datos que garantizan máxima disponibilidad y seguridad.</p>
+      </div>
+      <div class="service">
+        <h3>Sistema de Seguridad</h3>
+        <p>Implementación de sistemas avanzados para proteger la integridad de su infraestructura digital.</p>
+      </div>
+      <div class="service">
+        <h3>Sistema Eléctrico</h3>
+        <p>Instalaciones eléctricas especializadas para entornos informáticos con respaldo y protección.</p>
+      </div>
+      <div class="service">
+        <h3>Soluciones de Infraestructura Informática</h3>
+        <p>Diseño e implementación de infraestructuras robustas adaptadas a las necesidades de su empresa.</p>
+      </div>
+      <div class="service">
+        <h3>Soluciones de respaldo, contingencia y continuidad de negocio</h3>
+        <p>Estrategias y sistemas para garantizar la operatividad continua de su negocio ante cualquier eventualidad.</p>
+      </div>
     </div>
   </section>
 

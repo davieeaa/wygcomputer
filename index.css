@@ -158,16 +158,23 @@ body {
 .services {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem;
+}
+
+.services h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
-  padding: 2rem;
 }
 
 .service {
   display: flex;
   flex-direction: column;
-  height: 100%;
   margin: 0;
   background: white;
   padding: 1rem;
@@ -207,11 +214,6 @@ body {
   height: 150px;
   object-fit: contain;
   border-radius: 8px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.gallery img:hover {
-  transform: scale(1.1);
 }
 
 /* Footer */
