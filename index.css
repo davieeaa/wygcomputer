@@ -14,6 +14,7 @@ body {
   min-height: 200vh; /* 200% de la altura de la ventana */
 }
 
+
 /* 
  Estilo principal del header (barra de navegación)
  Aquí definimos la posición fija, el color inicial y
@@ -50,7 +51,17 @@ header {
   transform: translateY(-100px);
   opacity: 0;
 }
+.logo-img {
+    height: 50px;
+    transition: opacity 0.4s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
+.logo-img.scroll {
+    opacity: 0;
+}
 /* 
  Esta clase se añade con JavaScript cuando la página carga
  Hace que la barra aparezca con una animación desde arriba
@@ -60,6 +71,13 @@ header.visible {
   opacity: 1; /* Completamente visible */
 }
 
+header.sticky .logo-img.normal {
+    opacity: 0;
+}
+
+header.sticky .logo-img.scroll {
+    opacity: 1;
+}
 /* 
  Esta clase se añade con JavaScript al hacer scroll
  Cambia el color de la barra de blanco a azul
@@ -136,7 +154,7 @@ header.sticky ul li a {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  transition: background-image 1s ease;
+  transition: background-image 0.5s ease;
 }
 
 /* Navegación del Hero */
