@@ -279,32 +279,30 @@ header.sticky ul li a {
 .services {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem; /*espacio entre los cuadros*/
   background-color: #f4f9ff;
 }
 
 .services h1 {
   color: #03075a;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 2rem;
   text-align: center;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 1.5rem;
 }
 
 .service {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
   background: white;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+  text-align: center;
 }
 
 .service:hover {
@@ -320,8 +318,14 @@ header.sticky ul li a {
 }
 
 .service h3 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+  color: #03075a;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.service p {
+  line-height: 1.6;
+  color: #665;
 }
 
 /* Galería mejorada para responsive */
