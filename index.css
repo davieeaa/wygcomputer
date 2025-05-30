@@ -2,7 +2,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* El tamaño incluye padding y borde */
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
 
@@ -11,10 +11,9 @@
  y poder ver el efecto de cambio de color 
 */
 body {
-  min-height: 200vh; /* 200% de la altura de la ventana */
+  min-height: 200vh;
   background-color: #f4f9ff;
 }
-
 
 /* 
  Estilo principal del header (barra de navegación)
@@ -22,106 +21,137 @@ body {
  la configuración para la animación inicial
 */
 header {
-  /* Fija la barra en la pantalla al hacer scroll */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  
-  /* Espaciado interno y color inicial (blanco) */
   padding: 25px 100px;
-  background-color: rgba(255, 255, 255, 0.9); /* Blanco semi-transparente */
-  
-  /* Sin sombra inicial */
+  background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
-  
-  /* 
-     Duración de la transición para todos los cambios (color, posición, etc.)
-     0.6s = 600 milisegundos 
-  */
   transition: 0.6s;
-  
-  /* Asegura que la barra esté sobre todos los demás elementos */
   z-index: 100000;
-  
-  /* 
-     Configuración inicial para la animación: 
-     - transform: mueve la barra 100px hacia arriba (fuera de la pantalla)
-     - opacity: la hace invisible (0)
-  */
   transform: translateY(-100px);
   opacity: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 100001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+header.sticky .hamburger span {
+  background-color: #fff;
+}
+
 /* Mostrar el menú al hacer hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.logo-img {
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    transition: opacity 0.4s ease;
-    position: fixed;
-    top: 0;
-    left: 1;
+/* Contenedor del logo - mantiene el espacio y posición relativa */
+header .logo {
+  position: relative;
+  font-weight: 700;
+  color: #333;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.6s;
+  width: 120px; /* Ajusta según el tamaño de tu logo */
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.logo-img.scroll {
-    opacity: 0;
+/* Ambos logos ocupan exactamente la misma posición */
+.logo-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60px;
+  width: auto;
+  transition: opacity 0.4s ease;
 }
+
+/* Logo normal (visible por defecto) */
+.logo-img.normal {
+  opacity: 1;
+}
+
+/* Logo de scroll (oculto por defecto) */
+.logo-img.scroll {
+  opacity: 0;
+}
+
+/* Cuando se hace scroll, intercambiamos la visibilidad */
+header.sticky .logo-img.normal {
+  opacity: 0;
+}
+
+header.sticky .logo-img.scroll {
+  opacity: 1;
+}
+
 /* 
  Esta clase se añade con JavaScript cuando la página carga
  Hace que la barra aparezca con una animación desde arriba
 */
 header.visible {
-  transform: translateY(0); /* Regresa a su posición normal */
-  opacity: 1; /* Completamente visible */
+  transform: translateY(0);
+  opacity: 1;
 }
 
-header.sticky .logo-img.normal {
-    opacity: 0;
-}
-
-header.sticky .logo-img.scroll {
-    opacity: 1;
-}
 /* 
  Esta clase se añade con JavaScript al hacer scroll
  Cambia el color de la barra de blanco a azul
 */
 header.sticky {
-  padding: 20px 100px; /* Reduce ligeramente el padding */
-  background-color: #08085c; /* Azul semi-transparente */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Añade sombra sutil */
+  padding: 20px 100px;
+  background-color: #08085c;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo del logo en la barra de navegación */
-header .logo {
-  position: relative;
-  font-weight: 700; /* Negrita */
-  color: #333; /* Color oscuro */
-  text-decoration: none; /* Sin subrayado */
-  font-size: 2em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: 0.6s; /* Misma transición que el header */
-}
-
-/* 
- Cambia el color del logo cuando la barra se vuelve azul
- para mantener buen contraste
-*/
+/* Ajuste del color del contenedor del logo cuando está sticky */
 header.sticky .logo {
-  color: #fff; /* Cambia a blanco cuando el fondo es azul */
+  color: #fff;
 }
 
 /* Estilo de la lista de navegación */
 header ul {
   position: relative;
-  display: flex; /* Alinea los elementos horizontalmente */
+  display: flex;
   justify-content: center;
   align-items: center;
+  list-style: none;
 }
 
 /* Elimina los puntos de la lista */
@@ -135,10 +165,10 @@ header ul li a {
   position: relative;
   margin: 0 15px;
   text-decoration: none;
-  color: #333; /* Color oscuro inicial */
-  letter-spacing: 2px; /*espacio entre letras*/
+  color: #333;
+  letter-spacing: 2px;
   font-weight: 500;
-  transition: 0.6s; /* Transición suave al cambiar de color */
+  transition: 0.6s;
 }
 
 /* 
@@ -146,9 +176,8 @@ header ul li a {
  para mantener buen contraste
 */
 header.sticky ul li a {
-  color: #fff; /* Cambia a blanco cuando el fondo es azul */
+  color: #fff;
 }
-
 
 /* HERO con filtro */
 .hero {
@@ -156,8 +185,8 @@ header.sticky ul li a {
   text-align: center;
   padding: 4rem 1rem;
   background: url("img/fondo1.png") no-repeat center center/cover;
-  color: white; /*COLOR DE LA LETRA DEL FONDO*/
-  height: 700px; /*AJUSTA LA ALTURA DEL FONDO*/
+  color: white;
+  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -176,12 +205,12 @@ header.sticky ul li a {
   align-items: center;
   padding: 0 2rem;
   box-sizing: border-box;
-  z-index: 3; /* Por encima del overlay */
+  z-index: 3;
 }
 
 /* Botones de navegación */
 .hero-nav-button {
-  background-color: rgba(0, 3, 65, 0.6); /* Color similar a tu tema */
+  background-color: rgba(0, 3, 65, 0.6);
   color: white;
   border: none;
   width: 40px;
@@ -194,6 +223,7 @@ header.sticky ul li a {
   justify-content: center;
   transition: background-color 0.3s;
 }
+
 .hero-nav-button:hover {
   background-color: rgba(3, 7, 90, 0.9);
 }
@@ -216,7 +246,7 @@ header.sticky ul li a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(16, 6, 122, 0.649); /* Azul translúcido */
+  background: rgba(16, 6, 122, 0.649);
   z-index: 1;
 }
 
@@ -229,14 +259,14 @@ header.sticky ul li a {
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px #03075a(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
   font-size: 1.2rem;
   max-width: 600px;
   margin: 0 auto;
-  text-shadow: 1px 1px 2px #03075a(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Secciones */
@@ -273,7 +303,7 @@ header.sticky ul li a {
   background: white;
   padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px #03075a(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -290,12 +320,11 @@ header.sticky ul li a {
 }
 
 .service h3 {
-  
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
-/* Galería 2x8 mejorada para responsive */
+/* Galería mejorada para responsive */
 .gallery {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -354,9 +383,9 @@ footer {
 
 /* Logo */
 .info-logo {
-  padding-left: 50%;
-  width: 400px;
+  width: 200px;
   height: auto;
+  max-width: 100%;
 }
 
 /* Botón de Google Maps */
@@ -374,69 +403,16 @@ footer {
 .map-button:hover {
   background-color: #1a1a99;
 }
-.contact{
+
+.contact {
   background-color: #f4f9ff;
 }
-/* Responsive para pantallas pequeñas */
-@media (max-width: 1200px) {
-  .gallery {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
 
-@media (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    padding: 1rem;
-  }
-  
-  .main-nav {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.8rem;
-    margin-top: 1rem;
-  }
-  
-  .dropdown-content {
-    width: 100%;
-    position: static;
-  }
-  
-  .info-section {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .info-column.center {
-    border-left: none;
-    border-right: none;
-    padding: 1rem 0;
-  }
-  
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .hero h1 {
-    font-size: 2rem;
-  }
-  
-  .hero p {
-    font-size: 1rem;
-  }
-  .hero-nav {
-    padding: 0 1rem;
-  }
-  
-  .hero-nav-button {
-    width: 35px;
-    height: 35px;
-    font-size: 16px;
-  }
-  /* Animación: desliza desde la derecha */
+/* Animaciones */
 .animate-slide-right {
   animation: slideInRight 0.8s ease forwards;
 }
+
 @keyframes slideInRight {
   from {
     opacity: 0;
@@ -448,10 +424,10 @@ footer {
   }
 }
 
-/* Animación: desliza desde abajo */
 .animate-slide-up {
   animation: slideInUp 0.8s ease forwards;
 }
+
 @keyframes slideInUp {
   from {
     opacity: 0;
@@ -463,4 +439,312 @@ footer {
   }
 }
 
+/* RESPONSIVE DESIGN */
+
+/* Tablets medianas a grandes */
+@media (max-width: 1200px) {
+  header {
+    padding: 20px 50px;
+  }
+  
+  header.sticky {
+    padding: 15px 50px;
+  }
+  
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* Tablets pequeñas */
+@media (max-width: 992px) {
+  header {
+    padding: 15px 30px;
+  }
+  
+  header.sticky {
+    padding: 12px 30px;
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .info-section {
+    gap: 1.5rem;
+  }
+}
+
+/* Dispositivos móviles grandes */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+  }
+  
+  header.sticky {
+    padding: 12px 20px;
+  }
+  
+  /* Mostrar hamburger menu */
+  .hamburger {
+    display: flex;
+  }
+  
+  /* Ocultar menú normal en móviles */
+  header ul {
+    position: fixed;
+    left: -100%;
+    top: 90px;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.98);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    padding: 2rem 0;
+  }
+  
+  header.sticky ul {
+    background-color: rgba(8, 8, 92, 0.98);
+  }
+  
+  header ul.active {
+    left: 0;
+  }
+  
+  header ul li {
+    margin: 1rem 0;
+  }
+  
+  header ul li a {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  
+  .logo-img {
+    height: 50px;
+  }
+  
+  .hero {
+    height: 600px;
+    padding: 3rem 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .hero-nav {
+    padding: 0 1rem;
+  }
+  
+  .hero-nav-button {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
+  .services {
+    padding: 1.5rem 1rem;
+  }
+  
+  .services h1 {
+    font-size: 1.8rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .info-section {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .info-column.center {
+    border-left: none;
+    border-right: none;
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    padding: 1rem 0;
+  }
+  
+  .info-logo {
+    width: 150px;
+  }
+  
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  
+  .gallery img {
+    height: 120px;
+  }
+  
+  .contact {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Dispositivos móviles pequeños */
+@media (max-width: 480px) {
+  header {
+    padding: 12px 15px;
+  }
+  
+  header.sticky {
+    padding: 10px 15px;
+  }
+  
+  header ul {
+    top: 80px;
+  }
+  
+  .logo-img {
+    height: 45px;
+  }
+  
+  .hero {
+    height: 500px;
+    padding: 2rem 0.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero p {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+  
+  .hero-nav-button {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+  
+  .services {
+    padding: 1rem 0.5rem;
+  }
+  
+  .services h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .service {
+    padding: 1rem 0.8rem;
+  }
+  
+  .service h3 {
+    font-size: 1.1rem;
+  }
+  
+  .service p {
+    font-size: 0.9rem;
+  }
+  
+  .info-section {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .info-logo {
+    width: 120px;
+  }
+  
+  .map-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .gallery img {
+    height: 100px;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  
+  .contact {
+    padding: 1rem 0.5rem;
+  }
+  
+  .contact h2 {
+    font-size: 1.4rem;
+  }
+  
+  .contact p {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+  }
+  
+  footer {
+    padding: 1rem 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Dispositivos móviles muy pequeños */
+@media (max-width: 360px) {
+  .hero h1 {
+    font-size: 1.3rem;
+  }
+  
+  .hero p {
+    font-size: 0.8rem;
+  }
+  
+  .services h1 {
+    font-size: 1.4rem;
+  }
+  
+  .service h3 {
+    font-size: 1rem;
+  }
+  
+  .service p {
+    font-size: 0.8rem;
+  }
+  
+  .info-logo {
+    width: 100px;
+  }
+  
+  .gallery img {
+    height: 80px;
+    max-width: 150px;
+  }
 }
