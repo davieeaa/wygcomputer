@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>W&G AVILA</title>
+  <title>Servicios</title>
   <style>
     /* Reset general */
     * {
@@ -186,95 +186,6 @@
       color: #fff;
     }
 
-    /* HERO con filtro */
-    .hero {
-      position: relative;
-      text-align: center;
-      padding: 4rem 1rem;
-      background: url("img/fondo1.png") no-repeat center center/cover;
-      color: white;
-      height: 700px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      transition: background-image 0.5s ease;
-    }
-
-    /* Navegación del Hero */
-    .hero-nav {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 2rem;
-      box-sizing: border-box;
-      z-index: 3;
-    }
-
-    /* Botones de navegación */
-    .hero-nav-button {
-      background-color: rgba(0, 3, 65, 0.6);
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s;
-    }
-
-    .hero-nav-button:hover {
-      background-color: rgba(3, 7, 90, 0.9);
-    }
-
-    /* Indicador de fondo */
-    .background-indicator {
-      position: absolute;
-      bottom: 15px;
-      z-index: 3;
-      background-color: rgb(3, 7, 90);
-      color: white;
-      padding: 3px 10px;
-      border-radius: 15px;
-      font-size: 0.8rem;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(16, 6, 122, 0.649);
-      z-index: 1;
-    }
-
-    .hero h1,
-    .hero p {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
 
     /* Secciones */
     .services, .about, .contact {
@@ -282,76 +193,7 @@
       padding: 2rem 1rem;
     }
 
-    /* Servicios */
-    .services {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1rem; /*espacio entre los cuadros*/
-      background-color: #f4f9ff;
-    }
 
-    .services h1 {
-      color: #03075a;
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .service {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease-in-out;
-      text-align: center;
-    }
-
-    .service:hover {
-      transform: scale(1.05);
-    }
-
-    .service img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin: 0 auto;
-    }
-
-    .service h3 {
-      color: #03075a;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-
-    .service p {
-      line-height: 1.6;
-      color: #665;
-    }
-
-    /* Galería mejorada para responsive */
-    .gallery {
-      padding: 100px;
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
-      justify-items: center;
-      background-color: #f4f9ff;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 150px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
 
     /* Footer */
     footer {
@@ -468,13 +310,6 @@
         padding: 15px 50px;
       }
       
-      .gallery {
-        grid-template-columns: repeat(4, 1fr);
-      }
-      
-      .services-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      }
     }
 
     /* Tablets pequeñas */
@@ -486,24 +321,7 @@
       header.sticky {
         padding: 12px 30px;
       }
-      
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      
-      .hero p {
-        font-size: 1.1rem;
-      }
-      
-      .services-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.5rem;
-      }
-      
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
+  
       .info-section {
         gap: 1.5rem;
       }
@@ -560,42 +378,6 @@
         height: 50px;
       }
       
-      .hero {
-        height: 600px;
-        padding: 3rem 1rem;
-      }
-      
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-      
-      .hero-nav {
-        padding: 0 1rem;
-      }
-      
-      .hero-nav-button {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-      }
-      
-      .services {
-        padding: 1.5rem 1rem;
-      }
-      
-      .services h1 {
-        font-size: 1.8rem;
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
       .info-section {
         flex-direction: column;
         align-items: stretch;
@@ -615,16 +397,7 @@
         width: 150px;
         
       }
-      
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.8rem;
-      }
-      
-      .gallery img {
-        height: 120px;
-      }
-      
+
       .contact {
         padding: 1.5rem 1rem;
       }
@@ -648,49 +421,7 @@
         height: 45px;
         position: fixed;
       }
-      
-      .hero {
-        height: 500px;
-        padding: 2rem 0.5rem;
-      }
-      
-      .hero h1 {
-        font-size: 1.5rem;
-        margin-bottom: 0.8rem;
-      }
-      
-      .hero p {
-        font-size: 0.9rem;
-        padding: 0 1rem;
-      }
-      
-      .hero-nav-button {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
-      }
-      
-      .services {
-        padding: 1rem 0.5rem;
-      }
-      
-      .services h1 {
-        font-size: 1.6rem;
-        margin-bottom: 1.5rem;
-      }
-      
-      .service {
-        padding: 1rem 0.8rem;
-      }
-      
-      .service h3 {
-        font-size: 1.1rem;
-      }
-      
-      .service p {
-        font-size: 0.9rem;
-      }
-      
+            
       .info-section {
         padding: 1rem;
         gap: 1rem;
@@ -703,18 +434,6 @@
       .map-button {
         padding: 0.4rem 0.8rem;
         font-size: 0.9rem;
-      }
-      
-      .gallery {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-        margin-top: 1rem;
-      }
-      
-      .gallery img {
-        height: 100px;
-        max-width: 200px;
-        margin: 0 auto;
       }
       
       .contact {
@@ -738,34 +457,11 @@
 
     /* Dispositivos móviles muy pequeños */
     @media (max-width: 360px) {
-      .hero h1 {
-        font-size: 1.3rem;
-      }
-      
-      .hero p {
-        font-size: 0.8rem;
-      }
-      
-      .services h1 {
-        font-size: 1.4rem;
-      }
-      
-      .service h3 {
-        font-size: 1rem;
-      }
-      
-      .service p {
-        font-size: 0.8rem;
-      }
       
       .info-logo {
         width: 100px;
       }
       
-      .gallery img {
-        height: 80px;
-        max-width: 150px;
-      }
     }
   </style>
 </head>
@@ -795,81 +491,10 @@
         </ul>
 </header>
 
-  <!-- Hero con filtro -->
-  <section id="inicio" class="hero">
-      <!--Capa de filtro en el fondo-->
-    <div class="hero-overlay"></div>
-    <!--Botones de Navegacion-->
-    <div class="hero-nav">
-      <button class="hero-nav-button prev-btn">&lt;</button>
-      <button class="hero-nav-button next-btn">&gt;</button>
-    </div>
 
-    <h1 id="hero-title">Bienvenido a WYG Computer</h1>
-    <p id="hero-subtitle">Desarrollamos soluciones innovadoras para tus necesidades tecnológicas.</p>
-  </section>
-
-   <!-- Servicios -->
-  <section id="servicios" class="services">
-    <h1>Nuestros Servicios</h1>
-    <div class="services-grid">
-      <div class="service" id="cas">
-        <h3>Servicio de CAS</h3>
-        <p>Creación de sitios web modernos y funcionales adaptados a sus necesidades empresariales.</p>
-      </div>
-      <div class="service" id="consultoria">
-        <h3>Consultoría de Sistemas</h3>
-        <p>Asesoramiento experto para optimizar sus sistemas informáticos y mejorar la eficiencia operativa.</p>
-      </div>
-      <div class="service" id="cableado">
-        <h3>Cableado Estructurado</h3>
-        <p>Instalación profesional de sistemas de cableado para redes de comunicación confiables y escalables.</p>
-      </div>
-      <div class="service" id="datacenter">
-        <h3>Data Center</h3>
-        <p>Soluciones integrales para centros de datos que garantizan máxima disponibilidad y seguridad.</p>
-      </div>
-      <div class="service">
-        <h3>Sistema de Seguridad</h3>
-        <p>Implementación de sistemas avanzados para proteger la integridad de su infraestructura digital.</p>
-      </div>
-      <div class="service">
-        <h3>Sistema Eléctrico</h3>
-        <p>Instalaciones eléctricas especializadas para entornos informáticos con respaldo y protección.</p>
-      </div>
-      <div class="service">
-        <h3>Soluciones de Infraestructura Informática</h3>
-        <p>Diseño e implementación de infraestructuras robustas adaptadas a las necesidades de su empresa.</p>
-      </div>
-      <div class="service">
-        <h3>Soluciones de respaldo, contingencia y continuidad de negocio</h3>
-        <p>Estrategias y sistemas para garantizar la operatividad continua de su negocio ante cualquier eventualidad.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Nosotros -->
-  <section id="nosotros" class="about">
-    <h1>Socios Comerciales</h1>
-  <!--Imagenes-->
-    <div class="gallery">
-        <img src="img/img1.png" alt="Logo Socio Comercial 1">
-        <img src="img/img2.png" alt="Logo Socio Comercial 2">
-        <img src="img/img3.png" alt="Logo Socio Comercial 3">
-        <img src="img/img4.png" alt="Logo Socio Comercial 4">
-        <img src="img/img5.png" alt="Logo Socio Comercial 5">
-        <img src="img/img6.png" alt="Logo Socio Comercial 6">
-        <img src="img/img7.png" alt="Logo Socio Comercial 7">
-        <img src="img/img8.png" alt="Logo Socio Comercial 8">
-        <img src="img/img9.png" alt="Logo Socio Comercial 9">
-        <img src="img/img10.png" alt="Logo Socio Comercial 10">
-        <img src="img/img11.png" alt="Logo Socio Comercial 11">
-        <img src="img/img12.png" alt="Logo Socio Comercial 12">
-        <img src="img/img13.png" alt="Logo Socio Comercial 13">
-        <img src="img/img14.png" alt="Logo Socio Comercial 14">
-        <img src="img/img15.png" alt="Logo Socio Comercial 15">
-        <img src="img/img16.png" alt="Logo Socio Comercial 16">
-    </div>
+    <h1 id="hero-title"></h1>
+    <p id="hero-subtitle"></p>
+  
     <!-- Sección después de "Socios Comerciales" -->
 <hr class="section-divider"/>
 
@@ -912,21 +537,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Array de imágenes de fondo
-      const images = ["img/fondo1.jpg", "img/fondo2.jpg", "img/fondo3.jpg"];
-      
-      // Array con los títulos correspondientes a cada imagen
-      const titles = [
-        "Bienvenido a WYG Computer",
-        "Nuestros Servicios",
-        "Misión y Visión"
-      ];
-      
-      // Array con los subtítulos correspondientes a cada imagen
-      const subtitles = [
-        "Desarrollamos soluciones innovadoras para tus necesidades tecnológicas.",
-        "Ofrecemos soluciones integrales en tecnología, desde consultoría hasta implementación.",
-        "Comprometidos con la excelencia y la innovación para el futuro tecnológico de tu empresa."
-      ];
+      const images = [];
       
       // Elementos del DOM que cambiarán
       const heroTitle = document.getElementById("hero-title");
@@ -937,16 +548,10 @@
       const backgroundIndicator = document.querySelector(".background-indicator");
       let autoChangeInterval;
   
-      // Precargar imágenes
-      images.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
   
       // Función para actualizar el fondo y los textos
       function updateContent() {
-        // Actualiza la imagen de fondo
-        heroSection.style.backgroundImage = `url('${images[currentIndex]}')`;
+
         
         // Actualiza el título y subtítulo con una animación de fade
         fadeOut(heroTitle, function() {
@@ -959,10 +564,6 @@
           fadeIn(heroSubtitle);
         });
         
-        // Si hay un indicador de fondo, actualizarlo
-        if (backgroundIndicator) {
-          backgroundIndicator.textContent = `Fondo ${currentIndex + 1}/${images.length}`;
-        }
       }
       // Funciones para animar el cambio de texto
       function fadeOut(element, callback) {
@@ -1011,18 +612,6 @@
           });
       });
   
-      // Eventos para botones de navegación
-      document.querySelector(".prev-btn").addEventListener("click", function() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        updateContent();
-        resetAutoChange(); // Reinicia el temporizador
-      });
-  
-      document.querySelector(".next-btn").addEventListener("click", function() {
-        currentIndex = (currentIndex + 1) % images.length;
-        updateContent();
-        resetAutoChange(); // Reinicia el temporizador
-      });
   
       // Inicializar
       updateContent();

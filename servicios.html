@@ -1,614 +1,553 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Servicios - W&G Computer</title>
-  <link rel="stylesheet" href="index.css" />
+  <title>Servicios</title>
   <style>
-    /* Estilos específicos para la página de servicios */
-    .services-hero {
-      background: linear-gradient(135deg, #03075a 0%, #1a1a99 100%);
-      color: white;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
-      margin-top: 80px;
+    /* Reset general */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
-    .services-hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    /* 
+     Altura mínima del body para asegurar que haya scroll
+     y poder ver el efecto de cambio de color 
+    */
+    body {
+      min-height: 200vh;
+      background-color: #f4f9ff;
     }
 
-    .services-hero p {
-      font-size: 1.3rem;
-      max-width: 800px;
-      margin: 0 auto;
-      opacity: 0.95;
-    }
-
-    .services-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    .service-category {
-      margin-bottom: 5rem;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      overflow: hidden;
+    /* 
+     Estilo principal del header (barra de navegación)
+     Aquí definimos la posición fija, el color inicial y
+     la configuración para la animación inicial
+    */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px 100px; /* Tamaño de la barra de menu */
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
+      transition: 0.6s;
+      z-index: 100000;
+      transform: translateY(-100px);
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
-
-    .service-category.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .service-header {
-      background: linear-gradient(135deg, #03075a 0%, #1a1a99 100%);
-      color: white;
-      padding: 2rem;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 1.5rem;
     }
 
-    .service-icon {
-      width: 60px;
+    /* Hamburger Menu Styles */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 100001;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    header.sticky .hamburger span {
+      background-color: #fff;
+    }
+
+    /* Mostrar el menú al hacer hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Contenedor del logo - mantiene el espacio y posición relativa */
+    header .logo {
+      position: relative;
+      font-weight: 700;
+      color: #333;
+      text-decoration: none;
+      font-size: 2em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: 0.6s;
+      width: 120px; /* Ajusta según el tamaño de tu logo */
       height: 60px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
-      flex-shrink: 0;
     }
 
-    .service-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin: 0;
+    /* Ambos logos ocupan exactamente la misma posición */
+    .logo-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 60px;
+      width: auto;
+      transition: opacity 0.4s ease;
     }
 
-    .service-content {
-      padding: 2.5rem;
+    /* Logo normal (visible por defecto) */
+    .logo-img.normal {
+      opacity: 1;
     }
 
-    .service-description {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-      color: #444;
+    /* Logo de scroll (oculto por defecto) */
+    .logo-img.scroll {
+      opacity: 0;
     }
 
-    .service-features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+    /* Cuando se hace scroll, intercambiamos la visibilidad */
+    header.sticky .logo-img.normal {
+      opacity: 0;
     }
 
-    .feature-item {
-      background: #f8f9ff;
-      padding: 1.5rem;
-      border-radius: 10px;
-      border-left: 4px solid #03075a;
+    header.sticky .logo-img.scroll {
+      opacity: 1;
     }
 
-    .feature-item h4 {
-      color: #03075a;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+    /* 
+     Esta clase se añade con JavaScript cuando la página carga
+     Hace que la barra aparezca con una animación desde arriba
+    */
+    header.visible {
+      transform: translateY(0);
+      opacity: 1;
     }
 
-    .feature-item p {
-      color: #666;
-      margin: 0;
-      font-size: 0.95rem;
+    /* 
+     Esta clase se añade con JavaScript al hacer scroll
+     Cambia el color de la barra de blanco a azul
+    */
+    header.sticky {
+      padding: 20px 100px;
+      background-color: #08085c;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .certifications-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+    /* Ajuste del color del contenedor del logo cuando está sticky */
+    header.sticky .logo {
+      color: #fff;
     }
 
-    .certification-card {
-      background: #f8f9ff;
-      padding: 1.5rem;
-      border-radius: 10px;
-      text-align: center;
-      border: 2px solid #e6e9ff;
-      transition: transform 0.3s ease;
+    /* Estilo de la lista de navegación */
+    header ul {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
     }
 
-    .certification-card:hover {
-      transform: translateY(-5px);
-      border-color: #03075a;
+
+    /* Estilo de los enlaces de navegación */
+    header ul li a {
+      position: relative;
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      letter-spacing: 2px;
+      font-weight: 500;
+      transition: 0.6s;
     }
 
-    .certification-brand {
-      font-weight: 700;
-      color: #03075a;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+    /* 
+     Cambia el color de los enlaces cuando la barra se vuelve azul
+     para mantener buen contraste
+    */
+    header.sticky ul li a {
+      color: #fff;
     }
 
-    .projects-showcase {
-      background: #f8f9ff;
-      margin: 2rem 0;
-      padding: 2rem;
-      border-radius: 10px;
+
+    /* Animaciones */
+    .animate-slide-right {
+      animation: slideInRight 0.8s ease forwards;
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .project-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .project-title {
-      font-weight: 600;
-      color: #03075a;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .services-hero {
-        padding: 6rem 1rem 3rem;
-      }
-      
-      .services-hero h1 {
-        font-size: 2.2rem;
-      }
-      
-      .service-header {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .service-content {
-        padding: 1.5rem;
-      }
-      
-      .service-features {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Animación de aparición */
-    @keyframes fadeInUp {
+    @keyframes slideInRight {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateX(50%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideInUp 0.8s ease forwards;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50%);
       }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
+    /* Estilos para la transición de textos */
+    #hero-title, #hero-subtitle {
+      transition: opacity 0.5s ease;
+    }
+
+    /* RESPONSIVE DESIGN */
+
+    /* Tablets medianas a grandes */
+    @media (max-width: 1200px) {
+      header {
+        padding: 20px 50px;
+      }
+      
+      header.sticky {
+        padding: 15px 50px;
+      }
+      
+    }
+
+    /* Tablets pequeñas */
+    @media (max-width: 992px) {
+      header {
+        padding: 15px 30px;
+      }
+      
+      header.sticky {
+        padding: 12px 30px;
+      }
+  
+      .info-section {
+        gap: 1.5rem;
+      }
+    }
+
+    /* Dispositivos móviles grandes */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+      }
+      
+      header.sticky {
+        padding: 12px 20px;
+      }
+      
+      /* Mostrar hamburger menu */
+      .hamburger {
+        display: flex;
+      }
+      
+      /* Ocultar menú normal en móviles */
+      header ul {
+        position: fixed;
+        left: -100%;
+        top: 90px;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+      }
+      
+      header.sticky ul {
+        background-color: rgba(8, 8, 92, 0.98);
+      }
+      
+      header ul.active {
+        left: 0;
+      }
+      
+      header ul li {
+        margin: 1rem 0;
+      }
+      
+      header ul li a {
+        font-size: 1.1rem;
+        margin: 0;
+      }
+      
+      .logo-img {
+        height: 50px;
+      }
+      
+      .info-section {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .info-column.center {
+        border-left: none;
+        border-right: none;
+        border-top: 2px solid #ddd;
+        border-bottom: 2px solid #ddd;
+        padding: 1rem 0;
+      }
+      
+      .info-logo {
+        width: 150px;
+        
+      }
+
+      .contact {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    /* Dispositivos móviles pequeños */
+    @media (max-width: 480px) {
+      header {
+        padding: 12px 15px;
+      }
+      
+      header.sticky {
+        padding: 10px 15px;
+      }
+      
+      header ul {
+        top: 80px;
+      }
+      
+      .logo-img {
+        height: 45px;
+        position: fixed;
+      }
+            
+      .info-section {
+        padding: 1rem;
+        gap: 1rem;
+      }
+      
+      .info-logo {
+        width: 120px;
+      }
+      
+      .map-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      .contact {
+        padding: 1rem 0.5rem;
+      }
+      
+      .contact h2 {
+        font-size: 1.4rem;
+      }
+      
+      .contact p {
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+      }
+      
+      footer {
+        padding: 1rem 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Dispositivos móviles muy pequeños */
+    @media (max-width: 360px) {
+      
+      .info-logo {
+        width: 100px;
+      }
+      
+    }
   </style>
 </head>
 <body>
-  <!-- Header - Mismo que el original -->
+  <!-- Menu superior -->
   <header>
-    <a href="index.html" class="logo">
+    <a href="#" class="logo">
         <img src="img/logoclaro.png" class="logo-img normal" alt="Logo">
         <img src="img/logooscuro.png" class="logo-img scroll" alt="Logo">
     </a>
-    <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown">
-          <a href="servicios.html" class="dropbtn">Servicios</a>
-        </li>
-        <li><a href="portofolio.html">Portafolio</a></li>
-        <li class="dropdown">
-          <a href="quienessomos.html" class="dropbtn">Quiénes Somos</a>
-        </li>
-        <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="services-hero">
-    <h1>Nuestros Servicios</h1>
-    <p>Desde el 2003, ofrecemos soluciones informáticas integrales con tecnología sofisticada para la satisfacción total de nuestros clientes. Trabajamos bajo condiciones seguras de operación y cumplimos un marco de responsabilidad social.</p>
-  </section>
-
-  <!-- Servicios Container -->
-  <div class="services-container">
+    <!-- Botón hamburguesa para móviles -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+     <ul id="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="servicios.html" class="dropbtn">Servicios</a>
+            </li>
+            <li><a href="portofolio.html" class="dropbtn">Portafolio</a></li>
+            <li class="dropdown">
+                <a href="quienessomos.html" class="dropbtn">Quiénes Somos</a>
+            </li>
+            <li><a href="servicios2.html">Contacto</a></li>
+        </ul>
+</header>
     
-    <!-- Servicio CAS -->
-    <div class="service-category" id="cas">
-      <div class="service-header">
-        <div class="service-icon">🔧</div>
-        <h2 class="service-title">Servicio de CAS (Centro Autorizado de Servicio)</h2>
-      </div>
-      <div class="service-content">
-        <p class="service-description">
-          W&G Computer S.A. es un CAS (Centro Autorizado de Servicio) de COMPUHELP, representante de marcas reconocidas mundialmente. Contamos con técnicos certificados en todas las marcas que servimos.
-        </p>
-        <div class="service-features">
-          <div class="feature-item">
-            <h4>Marcas Autorizadas</h4>
-            <p>HP, LEXMARK, EPSON, IBM, SIEMON y más</p>
-          </div>
-          <div class="feature-item">
-            <h4>Técnicos Certificados</h4>
-            <p>Personal capacitado y certificado por cada fabricante</p>
-          </div>
-          <div class="feature-item">
-            <h4>Garantía Oficial</h4>
-            <p>Respaldo directo del fabricante en todos nuestros servicios</p>
-          </div>
-          <div class="feature-item">
-            <h4>Soporte 24/7</h4>
-            <p>Atención inmediata los 365 días del año</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1 id="hero-title"></h1>
+    <p id="hero-subtitle"></p>
 
-    <!-- Consultoría de Sistemas -->
-    <div class="service-category" id="consultoria">
-      <div class="service-header">
-        <div class="service-icon">💡</div>
-        <h2 class="service-title">Consultoría de Sistemas</h2>
-      </div>
-      <div class="service-content">
-        <p class="service-description">
-          Brindamos servicios especializados de consultoría en diferentes plataformas tecnológicas, ayudando a optimizar sus sistemas informáticos y mejorar la eficiencia operativa de su empresa.
-        </p>
-        <div class="service-features">
-          <div class="feature-item">
-            <h4>Análisis de Infraestructura</h4>
-            <p>Evaluación completa de su entorno tecnológico actual</p>
-          </div>
-          <div class="feature-item">
-            <h4>Optimización de Procesos</h4>
-            <p>Mejora de workflows y procesos tecnológicos</p>
-          </div>
-          <div class="feature-item">
-            <h4>Planeación Estratégica</h4>
-            <p>Roadmap tecnológico alineado con objetivos empresariales</p>
-          </div>
-          <div class="feature-item">
-            <h4>Múltiples Plataformas</h4>
-            <p>Experiencia en diversas tecnologías y sistemas</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  
+   
 
-    <!-- Cableado Estructurado -->
-    <div class="service-category" id="cableado">
-      <div class="service-header">
-        <div class="service-icon">🔌</div>
-        <h2 class="service-title">Cableado Estructurado</h2>
-      </div>
-      <div class="service-content">
-        <p class="service-description">
-          Instalación profesional de sistemas de cableado estructurado con certificaciones de Siemon, Panduit y Nitrotel, garantizando redes de comunicación confiables y escalables.
-        </p>
-        <div class="service-features">
-          <div class="feature-item">
-            <h4>Cableado Horizontal</h4>
-            <p>Tendido, paneles de voz y datos, tomas modulares</p>
-          </div>
-          <div class="feature-item">
-            <h4>Fibra Óptica</h4>
-            <p>Tendido y conexión de fibra óptica profesional</p>
-          </div>
-          <div class="feature-item">
-            <h4>Racks y Gabinetes</h4>
-            <p>Instalación, armado, organizadores y paneles</p>
-          </div>
-          <div class="feature-item">
-            <h4>Auditoría y Certificación</h4>
-            <p>Certificación y medición de instalaciones</p>
-          </div>
-        </div>
-        <div class="certifications-grid">
-          <div class="certification-card">
-            <div class="certification-brand">SIEMON</div>
-            <p>Listed Installer</p>
-          </div>
-          <div class="certification-card">
-            <div class="certification-brand">PANDUIT</div>
-            <p>Listed Installer</p>
-          </div>
-          <div class="certification-card">
-            <div class="certification-brand">NITROTEL</div>
-            <p>Instalador Certificado</p>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Data Center -->
-    <div class="service-category" id="datacenter">
-      <div class="service-header">
-        <div class="service-icon">🏢</div>
-        <h2 class="service-title">Data Center</h2>
-      </div>
-      <div class="service-content">
-        <p class="service-description">
-          Diseño, construcción e implementación completa de Data Centers. Hemos implementado 4 Data Centers en la Provincia de Santa Elena, 3 de ellos desde cero con construcción de obra civil.
-        </p>
-        <div class="service-features">
-          <div class="feature-item">
-            <h4>Construcción Civil</h4>
-            <p>Diseño y construcción de infraestructura física</p>
-          </div>
-          <div class="feature-item">
-            <h4>Climatización</h4>
-            <p>Sistemas de control de temperatura y humedad</p>
-          </div>
-          <div class="feature-item">
-            <h4>Sistemas Eléctricos</h4>
-            <p>Instalación eléctrica y sistemas de respaldo (UPS)</p>
-          </div>
-          <div class="feature-item">
-            <h4>Seguridad y Detección</h4>
-            <p>Sistemas de detección y extinción de incendios</p>
-          </div>
-        </div>
-        <div class="projects-showcase">
-          <h3>Proyectos Realizados</h3>
-          <div class="projects-grid">
-            <div class="project-card">
-              <div class="project-title">Data Center UPSE</div>
-              <p>Universidad Estatal Península de Santa Elena</p>
-            </div>
-            <div class="project-card">
-              <div class="project-title">Data Center CNEL</div>
-              <p>Corporación Nacional de Electricidad</p>
-            </div>
-            <div class="project-card">
-              <div class="project-title">Data Center AGUAPEN</div>
-              <p>Empresa de Agua Potable</p>
-            </div>
-            <div class="project-card">
-              <div class="project-title">Data Center IESS</div>
-              <p>Instituto Ecuatoriano de Seguridad Social</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Sistemas de Seguridad -->
-    <div class="service-category" id="seguridad">
-      <div class="service-header">
-        <div class="service-icon">🔒</div>
-        <h2 class="service-title">Sistemas de Seguridad</h2>
-      </div>
-      <div class="service-content">
-        <p class="service-description">
-          Diseño e implementación de sistemas de seguridad avanzados para proteger la integridad de su infraestructura digital y física.
-        </p>
-        <div class="service-features">
-          <div class="feature-item">
-            <h4>Circuitos Cerrados</h4>
-            <p>Sistemas CCTV de alta definición y monitoreo 24/7</p>
-          </div>
-          <div class="feature-item">
-            <h4>Telefonía IP</h4>
-            <p>Sistemas de comunicación IP modernos y seguros</p>
-          </div>
-          <div class="feature-item">
-            <h4>Sistemas Antivirus</h4>
-            <p>Protección integral contra amenazas digitales</p>
-          </div>
-          <div class="feature-item">
-            <h4>Alimentación Eléctrica</h4>
-            <p>Sistemas de respaldo y protección eléctrica</p>
-          </div>
-        </div>
-        <div class="certifications-grid">
-          <div class="certification-card">
-            <div class="certification-brand">HIKVISION</div>
-            <p>Certified Security Associate</p>
-          </div>
-          <div class="certification-card">
-            <div class="certification-brand">GRANDSTREAM</div>
-            <p>Certified Professional UC Solution</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sistema Eléctrico -->
-    <div class="service-category" id="electrico">
-      <div class="service-header">
-        <div class="service-icon">⚡</div>
-        <h2 class="service-title">Sistema Eléctrico</h2>
-      </div>
-      <div class="service-content">
-        <p class="service-description">
-          Asesoramiento, diseño, construcción y mantenimiento de sistemas eléctricos especializados para entornos informáticos con respaldo y protección.
-        </p>
-        <div class="service-features">
-          <div class="feature-item">
-            <h4>Redes de Distribución</h4>
-            <p>Diseño y construcción en baja y media tensión</p>
-          </div>
-          <div class="feature-item">
-            <h4>Instalaciones Residenciales</h4>
-            <p>Construcciones eléctricas para hogares</p>
-          </div>
-          <div class="feature-item">
-            <h4>Instalaciones Industriales</h4>
-            <p>Proyectos eléctricos para industrias</p>
-          </div>
-          <div class="feature-item">
-            <h4>Auditorías Energéticas</h4>
-            <p>Evaluación de calidad y eficiencia energética</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Infraestructura Informática -->
-    <div class="service-category" id="infraestructura">
-      <div class="service-header">
-        <div class="service-icon">🖥️</div>
-        <h2 class="service-title">Soluciones de Infraestructura Informática</h2>
-      </div>
-      <div class="service-content">
-        <p class="service-description">
-          Soluciones basadas en virtualización para administrar de forma más eficiente los servicios de TI, permitiendo responder a la dinámica del mercado de manera rápida y eficiente.
-        </p>
-        <div class="service-features">
-          <div class="feature-item">
-            <h4>Optimización de Hardware</h4>
-            <p>Maximización del uso de recursos físicos</p>
-          </div>
-          <div class="feature-item">
-            <h4>Administración Centralizada</h4>
-            <p>Gestión unificada de centros de datos virtualizados</p>
-          </div>
-          <div class="feature-item">
-            <h4>Despliegue Rápido</h4>
-            <p>Implementación de servidores y servicios en minutos</p>
-          </div>
-          <div class="feature-item">
-            <h4>Recuperación Inmediata</h4>
-            <p>Restauración rápida ante problemas de hardware</p>
-          </div>
-        </div>
-        <div class="certifications-grid">
-          <div class="certification-card">
-            <div class="certification-brand">VMWARE</div>
-            <p>VCP 6.5 Data Center Virtualization</p>
-          </div>
-          <div class="certification-card">
-            <div class="certification-brand">VMWARE</div>
-            <p>VSphere Install, Configure, Manage</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Soluciones de Respaldo -->
-    <div class="service-category" id="respaldo">
-      <div class="service-header">
-        <div class="service-icon">💾</div>
-        <h2 class="service-title">Soluciones de Respaldo y Continuidad</h2>
-      </div>
-      <div class="service-content">
-        <p class="service-description">
-          Soluciones de protección mediante respaldo local y remoto, con replicación de máquinas virtuales y planes de contingencia automatizados para garantizar la continuidad de su negocio.
-        </p>
-        <div class="service-features">
-          <div class="feature-item">
-            <h4>Protección Local y Remota</h4>
-            <p>Respaldo de datos en múltiples ubicaciones</p>
-          </div>
-          <div class="feature-item">
-            <h4>Recuperación Granular</h4>
-            <p>Restauración específica de archivos y datos</p>
-          </div>
-          <div class="feature-item">
-            <h4>Pruebas Automatizadas</h4>
-            <p>Verificación automática de respaldos sin interrupciones</p>
-          </div>
-          <div class="feature-item">
-            <h4>Planes de Contingencia</h4>
-            <p>Estrategias personalizadas de recuperación</p>
-          </div>
-        </div>
-        <div class="certifications-grid">
-          <div class="certification-card">
-            <div class="certification-brand">VEEAM</div>
-            <p>Technical Sales Professional</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Contacto -->
-  <section id="contacto" class="contact">
-    <h2>Contacto</h2>
-    <p>Escríbenos a <a href="mailto:wgcom@espoltel.net">wgcom@espoltel.net</a></p>
-    <p>Teléfono: +593 (04) 2930-417</p>
-    <p><strong>Dirección:</strong> Calle 16 vía Salinas - La Libertad</p>
-  </section>
-
-  <!-- Footer -->
+  <!-- Pie de Pagina-->
   <footer>
     <p>&copy; W&G Computer S.A. 2025. Todos los derechos reservados.</p>
   </footer>
 
   <script>
-    // Mismo script del header que el original
     document.addEventListener("DOMContentLoaded", function() {
-      const header = document.querySelector('header');
+      // Array de imágenes de fondo
+      const images = [];
       
-      setTimeout(function() {
-        header.classList.add('visible');
-      }, 300);
+      // Elementos del DOM que cambiarán
+      const heroTitle = document.getElementById("hero-title");
+      const heroSubtitle = document.getElementById("hero-subtitle");
       
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-          header.classList.add('sticky');
-        } else {
-          header.classList.remove('sticky');
+      let currentIndex = 0;
+      const heroSection = document.querySelector(".hero");
+      const backgroundIndicator = document.querySelector(".background-indicator");
+      let autoChangeInterval;
+  
+  
+      // Función para actualizar el fondo y los textos
+      function updateContent() {
+
+        
+        // Actualiza el título y subtítulo con una animación de fade
+        fadeOut(heroTitle, function() {
+          heroTitle.textContent = titles[currentIndex];
+          fadeIn(heroTitle);
+        });
+        
+        fadeOut(heroSubtitle, function() {
+          heroSubtitle.textContent = subtitles[currentIndex];
+          fadeIn(heroSubtitle);
+        });
+        
+      }
+      // Funciones para animar el cambio de texto
+      function fadeOut(element, callback) {
+        element.style.opacity = "0";
+        setTimeout(callback, 500); // Espera 500ms para la transición
+      }
+      
+      function fadeIn(element) {
+        element.style.opacity = "1";
+      }
+  
+      // Iniciar cambio automático
+      function startAutoChange() {
+        autoChangeInterval = setInterval(function() {
+          currentIndex = (currentIndex + 1) % images.length;
+          updateContent();
+        }, 5000);
+      }
+  
+      // El evento 'DOMContentLoaded' se dispara cuando el HTML ha sido completamente cargado
+      window.addEventListener('DOMContentLoaded', function() {
+          // Selecciona el elemento header (barra de navegación)
+          const header = document.querySelector('header');
+          
+          // Animación de entrada
+          setTimeout(function() {
+              header.classList.add('visible');
+          }, 300);
+          
+          // Cambio de color al hacer scroll
+          window.addEventListener('scroll', function() {
+              // Verifica si el scroll vertical es mayor a 50px
+              if (window.scrollY > 50) {
+                  // Añade la clase para el efecto de cambio de color
+                  header.classList.add('sticky');
+              } else {
+                  // Remueve la clase para volver al estado original
+                  header.classList.remove('sticky');
+              }
+          });
+      });
+  
+  
+      // Inicializar
+      updateContent();
+      startAutoChange();
+  
+      // Mostrar logo con scroll (cuando el logo principal ya no se ve)
+      window.addEventListener("scroll", function () {
+        const navLogo = document.querySelector(".nav-logo");
+        const logoSection = document.querySelector(".logo-section");
+        if (logoSection && navLogo) {
+          if (logoSection.getBoundingClientRect().bottom <= 0) {
+            navLogo.classList.add("visible");
+          } else {
+            navLogo.classList.remove("visible");
+          }
         }
       });
 
-      // Animación de aparición de servicios
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
+      // Funcionalidad del menú hamburguesa
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.service-category').forEach(category => {
-        observer.observe(category);
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
       });
 
-      // Smooth scroll para los enlaces del menú
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
+      // Cerrar menú al hacer clic en un enlace (móviles)
+      document.querySelectorAll('#nav-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
         });
+      });
+      
+    });
+
+    // Smooth scroll para los enlaces del menú
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
       });
     });
   </script>
+
 </body>
 </html>
+    
