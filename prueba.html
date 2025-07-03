@@ -6,7 +6,7 @@
 <title>W&G COMPUTER</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{min-height:200vh;background-color:#f4f9ff}
+body{min-height:200vh;background-color:#8ea916}
 header{position:fixed;top:0;left:0;width:100%;padding:10px 100px;background-color:rgba(255,255,255,.9);transition:.6s;z-index:100000;transform:translateY(-100px);opacity:0;display:flex;justify-content:space-between;align-items:center}
 .hamburger{display:none;flex-direction:column;cursor:pointer;z-index:100001}
 .hamburger span{width:25px;height:3px;background-color:#333;margin:3px 0;transition:.3s}
@@ -27,7 +27,7 @@ header ul{position:relative;display:flex;justify-content:center;align-items:cent
 header ul li{position:relative;list-style:none}
 header ul li a{position:relative;margin:0 15px;text-decoration:none;color:#333;letter-spacing:2px;font-weight:500;transition:.6s}
 header.sticky ul li a{color:#fff}
-.hero{position:relative;padding:4rem 1rem;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:white;height:700px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;overflow:hidden;transition:background-image .5s ease;touch-action:pan-y}
+.hero{position:relative;padding:4rem 1rem;background:url("img/fondo1.png") no-repeat center center/cover;background-attachment:fixed;color:white;height:700px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;overflow:hidden;transition:background-image .5s ease;touch-action:pan-y}
 .hero-nav{position:absolute;width:100%;height:100%;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;box-sizing:border-box;z-index:3}
 .hero-nav-button{background-color:rgba(0,3,65,.6);color:white;border:none;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color .3s}
 .hero-nav-button:hover{background-color:rgba(3,7,90,.9)}
@@ -37,103 +37,42 @@ header.sticky ul li a{color:#fff}
 .hero p{font-size:1.2rem;margin-bottom:2rem;text-shadow:1px 1px 2px rgba(0,0,0,.7);transform:translateY(30px);opacity:0;animation:slideUpFadeIn 1s ease-out .4s forwards}
 .hero-button{display:inline-block;padding:12px 30px;background-color:rgba(255,255,255,.9);color:#03075a;text-decoration:none;border-radius:25px;font-weight:600;font-size:1rem;transition:all .3s ease;transform:translateY(30px);opacity:0;animation:slideUpFadeIn 1s ease-out .6s forwards;box-shadow:0 4px 15px rgba(0,0,0,.2)}
 .hero-button:hover{background-color:#fff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
-
-/* Indicadores de deslizamiento para móviles */
 .hero-indicators{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:none;gap:8px;z-index:4}
 .hero-indicator{width:8px;height:8px;border-radius:50%;background-color:rgba(255,255,255,.5);cursor:pointer;transition:background-color .3s}
 .hero-indicator.active{background-color:rgba(255,255,255,.9)}
-
-@keyframes slideUpFadeIn{
-from{transform:translateY(30px);opacity:0}
-to{transform:translateY(0);opacity:1}
-}
-
-/* Estilos para la sección Sobre Nosotros */
-.about-company{
-background-color:#fff;
-padding:4rem 2rem;
-margin:2rem 0;
-}
-.about-container{
-max-width:1200px;
-margin:0 auto;
-display:flex;
-align-items:center;
-gap:3rem;
-}
-.about-content{
-flex:1;
-}
-.about-content h2{
-color:#03075a;
-font-size:2.5rem;
-margin-bottom:1.5rem;
-font-weight:700;
-}
-.about-intro{
-font-size:1.2rem;
-color:#666;
-margin-bottom:2rem;
-line-height:1.6;
-}
-.about-details{
-display:flex;
-flex-direction:column;
-gap:1.5rem;
-}
-.about-item h3{
-color:#03075a;
-font-size:1.3rem;
-margin-bottom:0.5rem;
-font-weight:600;
-}
-.about-item p{
-color:#666;
-line-height:1.6;
-font-size:1rem;
-}
-.about-image{
-flex:1;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-.company-image{
-width:100%;
-max-width:500px;
-height:400px;
-border-radius:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-transition:transform 0.3s ease;
-background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:1.2rem;
-text-align:center;
-}
-.company-image:hover{
-transform:scale(1.02);
-}
-
-.services{max-width:1200px;margin:0 auto;padding:2rem 1rem;background-color:#f4f9ff;text-align:center}
-.services h1{color:#03075a;font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;text-align:center}
+@keyframes slideUpFadeIn{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.about-company{background-color:#fff;padding:4rem 2rem;margin:0}
+.about-container{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:3rem}
+.about-content{flex:1}
+.about-content h2{color:#03075a;font-size:2.5rem;margin-bottom:1.5rem;font-weight:700}
+.about-intro{font-size:1.2rem;color:#666;margin-bottom:2rem;line-height:1.6}
+.about-details{display:flex;flex-direction:column;gap:1.5rem}
+.about-item h3{color:#03075a;font-size:1.3rem;margin-bottom:0.5rem;font-weight:600}
+.about-item p{color:#666;line-height:1.6;font-size:1rem}
+.about-image{flex:1;display:flex;justify-content:center;align-items:center}
+.company-image{width:100%;max-width:580px;height:380px;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:transform 0.3s ease}
+.company-image:hover{transform:scale(1.02)}
+.services{width:100%;margin:0;padding:4rem 2rem;background:url("img/fondo1.jpg") no-repeat center center/cover;background-attachment:fixed;position:relative;text-align:center}
+.services::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(16,6,122,.6);z-index:1}
+.services > *{position:relative;z-index:2;max-width:1200px;margin:0 auto}
+.services h1{color:#f7f7f7;font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;text-align:center}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:1.5rem}
 .service{background:white;padding:1.5rem;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:transform .3s ease-in-out;text-align:center}
 .service:hover{transform:scale(1.05)}
 .service h3{color:#03075a;margin-bottom:1rem;font-size:1.1rem}
 .service p{line-height:1.6;color:#665}
+.partners-section{background-color:#f4f9ff;padding:2rem 0}
+.partners-title{color:#03075a;text-align:center;font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;padding:0 1rem}
 .gallery{padding:100px;display:grid;grid-template-columns:repeat(8,1fr);gap:1rem;margin-top:2rem;justify-items:center;background-color:#f4f9ff}
-.gallery img{width:100%;height:150px;object-fit:contain;border-radius:8px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem}
-footer{text-align:center;background-color:#08085c;color:#f4f9ff;padding:1rem 0;margin-top:2rem}
+.gallery img{width:100%;height:150px;object-fit:contain;border-radius:8px}
 .info-section{display:flex;justify-content:space-between;align-items:center;padding:2rem;background-color:#f4f9ff;gap:2rem;flex-wrap:nowrap}
 .info-column{flex:1;min-width:200px;max-width:300px;text-align:center}
 .info-column.center{border-left:2px solid #ddd;border-right:2px solid #ddd;padding:0 1rem}
-.info-logo{width:200px;height:auto;max-width:100%;background:#f0f0f0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#999;margin:0 auto}
+.info-logo{width:200px;height:auto;max-width:100%}
 .map-button{display:inline-block;margin-top:.5rem;padding:.5rem 1rem;background-color:#03075a;color:white;text-decoration:none;border-radius:5px;transition:background-color .3s}
 .map-button:hover{background-color:#1a1a99}
 .contact{background-color:#f4f9ff;text-align:center;padding:2rem 1rem}
+footer{text-align:center;background-color:#08085c;color:#f4f9ff;padding:1rem 0;margin-top:0}
 @media (max-width:1200px){
 header{padding:20px 50px}
 header.sticky{padding:15px 50px}
@@ -149,6 +88,7 @@ header.sticky{padding:12px 30px}
 .services-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
 .gallery{grid-template-columns:repeat(3,1fr)}
 .info-section{gap:1.5rem}
+.about-container{flex-direction:column;gap:2rem}
 }
 @media (max-width:768px){
 header{padding:15px 20px;flex-wrap:wrap}
@@ -160,20 +100,14 @@ header ul.active{left:0}
 header ul li{margin:1rem 0}
 header ul li a{font-size:1.1rem;margin:0}
 .logo-img{height:50px}
-.hero{height:600px;padding:3rem 1rem}
+.hero{height:600px;padding:3rem 1rem;background-attachment:scroll}
 .hero h1{font-size:1.8rem}
 .hero p{font-size:1rem}
 .hero-content{padding:0 1rem 2rem 1rem}
 .hero-nav{padding:0 1rem}
-.hero-nav-button{display:none} /* Ocultar flechas en móviles */
-.hero-indicators{display:flex} /* Mostrar indicadores en móviles */
+.hero-nav-button{display:none}
+.hero-indicators{display:flex}
 .hero-button{padding:10px 25px;font-size:.9rem}
-.about-company{padding:2rem 1rem}
-.about-container{flex-direction:column;gap:2rem}
-.about-content h2{font-size:2rem;text-align:center}
-.about-intro{text-align:center}
-.about-image{margin-top:1rem}
-.company-image{max-width:100%}
 .services{padding:1.5rem 1rem}
 .services h1{font-size:1.8rem}
 .services-grid{grid-template-columns:1fr;gap:1.5rem}
@@ -189,18 +123,13 @@ header{padding:12px 15px}
 header.sticky{padding:10px 15px}
 header ul{top:80px}
 .logo-img{height:45px}
-.hero{height:500px;padding:2rem .5rem}
+.hero{height:500px;padding:2rem .5rem;background-attachment:scroll}
 .hero h1{font-size:1.5rem;margin-bottom:.8rem}
 .hero p{font-size:.9rem;margin-bottom:1.5rem}
 .hero-content{padding:0 .5rem 1.5rem .5rem}
-.hero-nav-button{display:none} /* Mantener ocultas las flechas */
-.hero-indicators{display:flex} /* Mantener indicadores visibles */
+.hero-nav-button{display:none}
+.hero-indicators{display:flex}
 .hero-button{padding:8px 20px;font-size:.8rem}
-.about-company{padding:1.5rem .5rem}
-.about-content h2{font-size:1.8rem}
-.about-intro{font-size:1rem}
-.about-item h3{font-size:1.1rem}
-.about-item p{font-size:.9rem}
 .services{padding:1rem .5rem}
 .services h1{font-size:1.6rem;margin-bottom:1.5rem}
 .service{padding:1rem .8rem}
@@ -231,8 +160,8 @@ footer{padding:1rem .5rem;font-size:.9rem}
 <body>
 <header>
 <a href="#" class="logo">
-<div class="logo-img normal" style="background:#03075a;color:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:bold;">W&G</div>
-<div class="logo-img scroll" style="background:white;color:#03075a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:bold;">W&G</div>
+<img src="img/logoclaro.png" class="logo-img normal" alt="Logo">
+<img src="img/logooscuro.png" class="logo-img scroll" alt="Logo">
 </a>
 <div class="hamburger" id="hamburger">
 <span></span>
@@ -240,10 +169,10 @@ footer{padding:1rem .5rem;font-size:.9rem}
 <span></span>
 </div>
 <ul id="nav-menu">
-<li><a href="#inicio">Inicio</a></li>
-<li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-<li><a href="#servicios">Servicios</a></li>
-<li><a href="#nosotros">Socios</a></li>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="servicios.html">Servicios</a></li>
+<li><a href="portofolio.html">Portafolio</a></li>
+<li><a href="quienessomos.html">Quiénes Somos</a></li>
 <li><a href="#contacto">Contacto</a></li>
 </ul>
 </header>
@@ -260,13 +189,12 @@ footer{padding:1rem .5rem;font-size:.9rem}
 <div class="hero-indicator" data-index="2"></div>
 </div>
 <div class="hero-content">
-<h1 id="hero-title">Bienvenido a W&G Computer</h1>
+<h1 id="hero-title">Bienvenido a WYG Computer</h1>
 <p id="hero-subtitle">Desarrollamos soluciones innovadoras para tus necesidades tecnológicas.</p>
 <a href="#servicios" class="hero-button" id="hero-button">Ver más</a>
 </div>
 </section>
 
-<!-- Nueva sección Sobre Nosotros -->
 <section id="sobre-nosotros" class="about-company">
 <div class="about-container">
 <div class="about-content">
@@ -288,9 +216,7 @@ footer{padding:1rem .5rem;font-size:.9rem}
 </div>
 </div>
 <div class="about-image">
-<div class="company-image">
 <img src="img/w&glocation.jpg" alt="Equipo W&G Computer" class="company-image">
-</div>
 </div>
 </div>
 </section>
@@ -333,33 +259,33 @@ footer{padding:1rem .5rem;font-size:.9rem}
 </div>
 </section>
 
-<section id="nosotros" class="about">
-<h1 style="color:#03075a;text-align:center;font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;">Socios Comerciales</h1>
+<section id="nosotros" class="partners-section">
+<h1 class="partners-title">Socios Comerciales</h1>
 <div class="gallery">
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 1</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 2</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 3</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 4</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 5</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 6</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 7</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 8</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 9</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 10</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 11</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 12</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 13</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 14</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 15</div>
-<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 16</div>
+<img src="img/img1.png" alt="Logo Socio Comercial 1">
+<img src="img/img2.png" alt="Logo Socio Comercial 2">
+<img src="img/img3.png" alt="Logo Socio Comercial 3">
+<img src="img/img4.png" alt="Logo Socio Comercial 4">
+<img src="img/img5.png" alt="Logo Socio Comercial 5">
+<img src="img/img6.png" alt="Logo Socio Comercial 6">
+<img src="img/img7.png" alt="Logo Socio Comercial 7">
+<img src="img/img8.png" alt="Logo Socio Comercial 8">
+<img src="img/img9.png" alt="Logo Socio Comercial 9">
+<img src="img/img10.png" alt="Logo Socio Comercial 10">
+<img src="img/img11.png" alt="Logo Socio Comercial 11">
+<img src="img/img12.png" alt="Logo Socio Comercial 12">
+<img src="img/img13.png" alt="Logo Socio Comercial 13">
+<img src="img/img14.png" alt="Logo Socio Comercial 14">
+<img src="img/img15.png" alt="Logo Socio Comercial 15">
+<img src="img/img16.png" alt="Logo Socio Comercial 16">
 </div>
 
 <div class="info-section">
 <div class="info-column">
-<div class="info-logo" style="height:120px;">Logo W&G</div>
+<img src="img/logoclaro.png" alt="Logo WYG Computer" class="info-logo">
 </div>
 <div class="info-column center">
-<p><strong>Dirección:</strong> Calle 16 vía Salinas - La Libertad</p>
+<p><strong>Direccion:</strong> Calle 16 via Salinas - La Libertad</p>
 <a href="https://www.google.com/maps/place/2%C2%B013'47.6%22S+80%C2%B055'48.6%22W/@-2.2298783,-80.9327489,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-2.2298783!4d-80.930174?hl=en&entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-button">Ver en Google Maps</a>
 </div>
 <div class="info-column">
@@ -382,30 +308,24 @@ footer{padding:1rem .5rem;font-size:.9rem}
 
 <script>
 document.addEventListener("DOMContentLoaded",function(){
-const backgroundImages = [
-'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
-];
-const titles=["Bienvenido a W&G Computer","Nuestros Servicios","Misión y Visión"];
-const subtitles=["Desarrollamos soluciones innovadoras para tus necesidades tecnológicas.","Ofrecemos soluciones integrales en tecnología, desde consultoría hasta implementación.","Comprometidos con la excelencia y la innovación para el futuro tecnológico de tu empresa."];
-const buttonTexts=["Ver más","Conocer servicios","Sobre nosotros"];
-const buttonLinks=["#servicios","#servicios","#sobre-nosotros"];
-const heroTitle=document.getElementById("hero-title");
-const heroSubtitle=document.getElementById("hero-subtitle");
-const heroButton=document.getElementById("hero-button");
-const heroSection=document.querySelector(".hero");
-const indicators=document.querySelectorAll('.hero-indicator');
-let currentIndex=0;
-let autoChangeInterval;
+const images=["img/fondo1.jpg","img/fondo2.jpg","img/fondo3.jpg"],
+titles=["Bienvenido a WYG Computer","Nuestros Servicios","Misión y Visión"],
+subtitles=["Desarrollamos soluciones innovadoras para tus necesidades tecnológicas.","Ofrecemos soluciones integrales en tecnología, desde consultoría hasta implementación.","Comprometidos con la excelencia y la innovación para el futuro tecnológico de tu empresa."],
+buttonTexts=["Ver más","Conocer servicios","Sobre nosotros"],
+buttonLinks=["#servicios","#servicios","#nosotros"],
+heroTitle=document.getElementById("hero-title"),
+heroSubtitle=document.getElementById("hero-subtitle"),
+heroButton=document.getElementById("hero-button"),
+heroSection=document.querySelector(".hero"),
+indicators=document.querySelectorAll('.hero-indicator'),
+header=document.querySelector('header'),
+hamburger=document.getElementById('hamburger'),
+navMenu=document.getElementById('nav-menu');
 
-// Variables para el manejo de touch/swipe
-let startX = 0;
-let startY = 0;
-let endX = 0;
-let endY = 0;
-let isSwipeActive = false;
-const minSwipeDistance = 50;
+let currentIndex=0,autoChangeInterval,startX=0,startY=0,endX=0,endY=0,isSwipeActive=false;
+const minSwipeDistance=50;
+
+images.forEach(src=>{const img=new Image();img.src=src;});
 
 function resetAnimations(){
 heroTitle.style.animation='none';
@@ -420,13 +340,13 @@ heroButton.style.animation='slideUpFadeIn 1s ease-out 0.6s forwards';
 }
 
 function updateIndicators(){
-indicators.forEach((indicator, index) => {
-indicator.classList.toggle('active', index === currentIndex);
+indicators.forEach((indicator,index)=>{
+indicator.classList.toggle('active',index===currentIndex);
 });
 }
 
 function updateContent(){
-heroSection.style.background = backgroundImages[currentIndex];
+heroSection.style.backgroundImage=`url('${images[currentIndex]}')`;
 heroTitle.textContent=titles[currentIndex];
 heroSubtitle.textContent=subtitles[currentIndex];
 heroButton.textContent=buttonTexts[currentIndex];
@@ -436,9 +356,104 @@ resetAnimations();
 }
 
 function nextSlide(){
-currentIndex=(currentIndex+1)%backgroundImages.length;
+currentIndex=(currentIndex+1)%images.length;
 updateContent();
 }
 
 function prevSlide(){
-currentIndex=(currentIndex-1+backgroundImages.length)%backgroundImages.
+currentIndex=(currentIndex-1+images.length)%images.length;
+updateContent();
+}
+
+function goToSlide(index){
+currentIndex=index;
+updateContent();
+}
+
+function startAutoChange(){
+autoChangeInterval=setInterval(nextSlide,6000);
+}
+
+function resetAutoChange(){
+clearInterval(autoChangeInterval);
+startAutoChange();
+}
+
+setTimeout(()=>header.classList.add('visible'),300);
+
+window.addEventListener('scroll',()=>{
+if(window.scrollY>50){header.classList.add('sticky');}else{header.classList.remove('sticky');}
+});
+
+document.querySelector(".prev-btn").addEventListener("click",()=>{
+prevSlide();
+resetAutoChange();
+});
+
+document.querySelector(".next-btn").addEventListener("click",()=>{
+nextSlide();
+resetAutoChange();
+});
+
+indicators.forEach((indicator,index)=>{
+indicator.addEventListener('click',()=>{
+goToSlide(index);
+resetAutoChange();
+});
+});
+
+heroSection.addEventListener('touchstart',e=>{
+if(window.innerWidth<=768){
+startX=e.touches[0].clientX;
+startY=e.touches[0].clientY;
+isSwipeActive=true;
+clearInterval(autoChangeInterval);
+}
+},{passive:true});
+
+heroSection.addEventListener('touchmove',e=>{
+if(window.innerWidth<=768&&isSwipeActive){
+const deltaX=Math.abs(e.touches[0].clientX-startX),
+deltaY=Math.abs(e.touches[0].clientY-startY);
+if(deltaX>deltaY)e.preventDefault();
+}
+},{passive:false});
+
+heroSection.addEventListener('touchend',e=>{
+if(!isSwipeActive||window.innerWidth>768)return;
+endX=e.changedTouches[0].clientX;
+endY=e.changedTouches[0].clientY;
+const deltaX=endX-startX,deltaY=endY-startY;
+if(Math.abs(deltaX)>Math.abs(deltaY)&&Math.abs(deltaX)>minSwipeDistance){
+if(deltaX>0)prevSlide();else nextSlide();
+}
+isSwipeActive=false;
+resetAutoChange();
+},{passive:true});
+
+hamburger.addEventListener('click',()=>{
+hamburger.classList.toggle('active');
+navMenu.classList.toggle('active');
+});
+
+document.querySelectorAll('#nav-menu a').forEach(link=>{
+link.addEventListener('click',()=>{
+hamburger.classList.remove('active');
+navMenu.classList.remove('active');
+});
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+anchor.addEventListener('click',e=>{
+e.preventDefault();
+const target=document.querySelector(anchor.getAttribute('href'));
+if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+});
+});
+
+updateContent();
+startAutoChange();
+});
+</script>
+</body>
+</html>
