@@ -27,7 +27,7 @@ header ul{position:relative;display:flex;justify-content:center;align-items:cent
 header ul li{position:relative;list-style:none}
 header ul li a{position:relative;margin:0 15px;text-decoration:none;color:#333;letter-spacing:2px;font-weight:500;transition:.6s}
 header.sticky ul li a{color:#fff}
-.hero{position:relative;padding:4rem 1rem;background:url("img/fondo1.png") no-repeat center center/cover;color:white;height:700px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;overflow:hidden;transition:background-image .5s ease;touch-action:pan-y}
+.hero{position:relative;padding:4rem 1rem;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:white;height:700px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;overflow:hidden;transition:background-image .5s ease;touch-action:pan-y}
 .hero-nav{position:absolute;width:100%;height:100%;display:flex;justify-content:space-between;align-items:center;padding:0 2rem;box-sizing:border-box;z-index:3}
 .hero-nav-button{background-color:rgba(0,3,65,.6);color:white;border:none;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color .3s}
 .hero-nav-button:hover{background-color:rgba(3,7,90,.9)}
@@ -47,6 +47,76 @@ header.sticky ul li a{color:#fff}
 from{transform:translateY(30px);opacity:0}
 to{transform:translateY(0);opacity:1}
 }
+
+/* Estilos para la sección Sobre Nosotros */
+.about-company{
+background-color:#fff;
+padding:4rem 2rem;
+margin:2rem 0;
+}
+.about-container{
+max-width:1200px;
+margin:0 auto;
+display:flex;
+align-items:center;
+gap:3rem;
+}
+.about-content{
+flex:1;
+}
+.about-content h2{
+color:#03075a;
+font-size:2.5rem;
+margin-bottom:1.5rem;
+font-weight:700;
+}
+.about-intro{
+font-size:1.2rem;
+color:#666;
+margin-bottom:2rem;
+line-height:1.6;
+}
+.about-details{
+display:flex;
+flex-direction:column;
+gap:1.5rem;
+}
+.about-item h3{
+color:#03075a;
+font-size:1.3rem;
+margin-bottom:0.5rem;
+font-weight:600;
+}
+.about-item p{
+color:#666;
+line-height:1.6;
+font-size:1rem;
+}
+.about-image{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.company-image{
+width:100%;
+max-width:500px;
+height:400px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+transition:transform 0.3s ease;
+background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:1.2rem;
+text-align:center;
+}
+.company-image:hover{
+transform:scale(1.02);
+}
+
 .services{max-width:1200px;margin:0 auto;padding:2rem 1rem;background-color:#f4f9ff;text-align:center}
 .services h1{color:#03075a;font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;text-align:center}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:1.5rem}
@@ -55,12 +125,12 @@ to{transform:translateY(0);opacity:1}
 .service h3{color:#03075a;margin-bottom:1rem;font-size:1.1rem}
 .service p{line-height:1.6;color:#665}
 .gallery{padding:100px;display:grid;grid-template-columns:repeat(8,1fr);gap:1rem;margin-top:2rem;justify-items:center;background-color:#f4f9ff}
-.gallery img{width:100%;height:150px;object-fit:contain;border-radius:8px}
+.gallery img{width:100%;height:150px;object-fit:contain;border-radius:8px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem}
 footer{text-align:center;background-color:#08085c;color:#f4f9ff;padding:1rem 0;margin-top:2rem}
 .info-section{display:flex;justify-content:space-between;align-items:center;padding:2rem;background-color:#f4f9ff;gap:2rem;flex-wrap:nowrap}
 .info-column{flex:1;min-width:200px;max-width:300px;text-align:center}
 .info-column.center{border-left:2px solid #ddd;border-right:2px solid #ddd;padding:0 1rem}
-.info-logo{width:200px;height:auto;max-width:100%}
+.info-logo{width:200px;height:auto;max-width:100%;background:#f0f0f0;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#999;margin:0 auto}
 .map-button{display:inline-block;margin-top:.5rem;padding:.5rem 1rem;background-color:#03075a;color:white;text-decoration:none;border-radius:5px;transition:background-color .3s}
 .map-button:hover{background-color:#1a1a99}
 .contact{background-color:#f4f9ff;text-align:center;padding:2rem 1rem}
@@ -98,6 +168,12 @@ header ul li a{font-size:1.1rem;margin:0}
 .hero-nav-button{display:none} /* Ocultar flechas en móviles */
 .hero-indicators{display:flex} /* Mostrar indicadores en móviles */
 .hero-button{padding:10px 25px;font-size:.9rem}
+.about-company{padding:2rem 1rem}
+.about-container{flex-direction:column;gap:2rem}
+.about-content h2{font-size:2rem;text-align:center}
+.about-intro{text-align:center}
+.about-image{margin-top:1rem}
+.company-image{max-width:100%}
 .services{padding:1.5rem 1rem}
 .services h1{font-size:1.8rem}
 .services-grid{grid-template-columns:1fr;gap:1.5rem}
@@ -112,7 +188,7 @@ header ul li a{font-size:1.1rem;margin:0}
 header{padding:12px 15px}
 header.sticky{padding:10px 15px}
 header ul{top:80px}
-.logo-img{height:45px;position:fixed}
+.logo-img{height:45px}
 .hero{height:500px;padding:2rem .5rem}
 .hero h1{font-size:1.5rem;margin-bottom:.8rem}
 .hero p{font-size:.9rem;margin-bottom:1.5rem}
@@ -120,6 +196,11 @@ header ul{top:80px}
 .hero-nav-button{display:none} /* Mantener ocultas las flechas */
 .hero-indicators{display:flex} /* Mantener indicadores visibles */
 .hero-button{padding:8px 20px;font-size:.8rem}
+.about-company{padding:1.5rem .5rem}
+.about-content h2{font-size:1.8rem}
+.about-intro{font-size:1rem}
+.about-item h3{font-size:1.1rem}
+.about-item p{font-size:.9rem}
 .services{padding:1rem .5rem}
 .services h1{font-size:1.6rem;margin-bottom:1.5rem}
 .service{padding:1rem .8rem}
@@ -150,8 +231,8 @@ footer{padding:1rem .5rem;font-size:.9rem}
 <body>
 <header>
 <a href="#" class="logo">
-<img src="img/logoclaro.png" class="logo-img normal" alt="Logo">
-<img src="img/logooscuro.png" class="logo-img scroll" alt="Logo">
+<div class="logo-img normal" style="background:#03075a;color:white;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:bold;">W&G</div>
+<div class="logo-img scroll" style="background:white;color:#03075a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:bold;">W&G</div>
 </a>
 <div class="hamburger" id="hamburger">
 <span></span>
@@ -159,10 +240,10 @@ footer{padding:1rem .5rem;font-size:.9rem}
 <span></span>
 </div>
 <ul id="nav-menu">
-<li><a href="index.html">Inicio</a></li>
-<li><a href="servicios.html">Servicios</a></li>
-<li><a href="portofolio.html">Portafolio</a></li>
-<li><a href="quienessomos.html">Quiénes Somos</a></li>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#nosotros">Socios</a></li>
 <li><a href="#contacto">Contacto</a></li>
 </ul>
 </header>
@@ -179,13 +260,121 @@ footer{padding:1rem .5rem;font-size:.9rem}
 <div class="hero-indicator" data-index="2"></div>
 </div>
 <div class="hero-content">
-<h1 id="hero-title">Bienvenido a WYG Computer</h1>
+<h1 id="hero-title">Bienvenido a W&G Computer</h1>
 <p id="hero-subtitle">Desarrollamos soluciones innovadoras para tus necesidades tecnológicas.</p>
 <a href="#servicios" class="hero-button" id="hero-button">Ver más</a>
 </div>
 </section>
 
+<!-- Nueva sección Sobre Nosotros -->
+<section id="sobre-nosotros" class="about-company">
+<div class="about-container">
+<div class="about-content">
+<h2>Sobre W&G Computer</h2>
+<p class="about-intro">Somos una empresa especializada en soluciones tecnológicas integrales, comprometida con la innovación y la excelencia en cada proyecto que desarrollamos.</p>
+<div class="about-details">
+<div class="about-item">
+<h3>Nuestra Experiencia</h3>
+<p>Con años de experiencia en el mercado tecnológico, hemos desarrollado expertise en consultoría de sistemas, infraestructura informática y soluciones de seguridad.</p>
+</div>
+<div class="about-item">
+<h3>Nuestro Compromiso</h3>
+<p>Nos dedicamos a proporcionar soluciones personalizadas que impulsen el crecimiento y la eficiencia de nuestros clientes, utilizando las últimas tecnologías del mercado.</p>
+</div>
+<div class="about-item">
+<h3>Nuestra Visión</h3>
+<p>Ser la empresa líder en soluciones tecnológicas, reconocida por nuestra calidad, innovación y compromiso con la satisfacción de nuestros clientes.</p>
+</div>
+</div>
+</div>
+<div class="about-image">
+<div class="company-image">
+<img src="img/w&glocation.jpg" alt="Equipo W&G Computer" class="company-image">
+</div>
+</div>
+</div>
+</section>
 
+<section id="servicios" class="services">
+<h1>Nuestros Servicios</h1>
+<div class="services-grid">
+<div class="service">
+<h3>Servicio de CAS</h3>
+<p>Creación de sitios web modernos y funcionales adaptados a sus necesidades empresariales.</p>
+</div>
+<div class="service">
+<h3>Consultoría de Sistemas</h3>
+<p>Asesoramiento experto para optimizar sus sistemas informáticos y mejorar la eficiencia operativa.</p>
+</div>
+<div class="service">
+<h3>Cableado Estructurado</h3>
+<p>Instalación profesional de sistemas de cableado para redes de comunicación confiables y escalables.</p>
+</div>
+<div class="service">
+<h3>Data Center</h3>
+<p>Soluciones integrales para centros de datos que garantizan máxima disponibilidad y seguridad.</p>
+</div>
+<div class="service">
+<h3>Sistema de Seguridad</h3>
+<p>Implementación de sistemas avanzados para proteger la integridad de su infraestructura digital.</p>
+</div>
+<div class="service">
+<h3>Sistema Eléctrico</h3>
+<p>Instalaciones eléctricas especializadas para entornos informáticos con respaldo y protección.</p>
+</div>
+<div class="service">
+<h3>Soluciones de Infraestructura Informática</h3>
+<p>Diseño e implementación de infraestructuras robustas adaptadas a las necesidades de su empresa.</p>
+</div>
+<div class="service">
+<h3>Soluciones de respaldo, contingencia y continuidad de negocio</h3>
+<p>Estrategias y sistemas para garantizar la operatividad continua de su negocio ante cualquier eventualidad.</p>
+</div>
+</div>
+</section>
+
+<section id="nosotros" class="about">
+<h1 style="color:#03075a;text-align:center;font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;">Socios Comerciales</h1>
+<div class="gallery">
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 1</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 2</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 3</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 4</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 5</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 6</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 7</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 8</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 9</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 10</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 11</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 12</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 13</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 14</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 15</div>
+<div style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.8rem;text-align:center;border-radius:8px;height:150px;">Logo Socio 16</div>
+</div>
+
+<div class="info-section">
+<div class="info-column">
+<div class="info-logo" style="height:120px;">Logo W&G</div>
+</div>
+<div class="info-column center">
+<p><strong>Dirección:</strong> Calle 16 vía Salinas - La Libertad</p>
+<a href="https://www.google.com/maps/place/2%C2%B013'47.6%22S+80%C2%B055'48.6%22W/@-2.2298783,-80.9327489,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-2.2298783!4d-80.930174?hl=en&entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-button">Ver en Google Maps</a>
+</div>
+<div class="info-column">
+<p><strong>Horario de atención:</strong></p>
+<p>Lunes a Viernes: 9am - 6pm</p>
+<p>Sábados y Domingos: cerrado</p>
+</div>
+</div>
+</section>
+
+<section id="contacto" class="contact">
+<h2>Contacto</h2>
+<p>Escríbenos a <a href="mailto:aavila@wygcomputer.com">aavila@wygcomputer.com</a></p>
+<p>Teléfono: +593 (04) 2930-417</p>
+</section>
 
 <footer>
 <p>&copy; W&G Computer S.A. 2025. Todos los derechos reservados.</p>
@@ -193,11 +382,15 @@ footer{padding:1rem .5rem;font-size:.9rem}
 
 <script>
 document.addEventListener("DOMContentLoaded",function(){
-const images=["img/fondo1.jpg","img/fondo2.jpg","img/fondo3.jpg"];
-const titles=["Bienvenido a WYG Computer","Nuestros Servicios","Misión y Visión"];
+const backgroundImages = [
+'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+];
+const titles=["Bienvenido a W&G Computer","Nuestros Servicios","Misión y Visión"];
 const subtitles=["Desarrollamos soluciones innovadoras para tus necesidades tecnológicas.","Ofrecemos soluciones integrales en tecnología, desde consultoría hasta implementación.","Comprometidos con la excelencia y la innovación para el futuro tecnológico de tu empresa."];
 const buttonTexts=["Ver más","Conocer servicios","Sobre nosotros"];
-const buttonLinks=["#servicios","#servicios","#nosotros"];
+const buttonLinks=["#servicios","#servicios","#sobre-nosotros"];
 const heroTitle=document.getElementById("hero-title");
 const heroSubtitle=document.getElementById("hero-subtitle");
 const heroButton=document.getElementById("hero-button");
@@ -213,8 +406,6 @@ let endX = 0;
 let endY = 0;
 let isSwipeActive = false;
 const minSwipeDistance = 50;
-
-images.forEach(src=>{const img=new Image();img.src=src;});
 
 function resetAnimations(){
 heroTitle.style.animation='none';
@@ -235,7 +426,7 @@ indicator.classList.toggle('active', index === currentIndex);
 }
 
 function updateContent(){
-heroSection.style.backgroundImage=`url('${images[currentIndex]}')`;
+heroSection.style.background = backgroundImages[currentIndex];
 heroTitle.textContent=titles[currentIndex];
 heroSubtitle.textContent=subtitles[currentIndex];
 heroButton.textContent=buttonTexts[currentIndex];
@@ -245,134 +436,9 @@ resetAnimations();
 }
 
 function nextSlide(){
-currentIndex=(currentIndex+1)%images.length;
+currentIndex=(currentIndex+1)%backgroundImages.length;
 updateContent();
 }
 
 function prevSlide(){
-currentIndex=(currentIndex-1+images.length)%images.length;
-updateContent();
-}
-
-function goToSlide(index){
-currentIndex = index;
-updateContent();
-}
-
-function startAutoChange(){
-autoChangeInterval=setInterval(nextSlide, 6000);
-}
-
-function resetAutoChange(){
-clearInterval(autoChangeInterval);
-startAutoChange();
-}
-
-// Event listeners para las flechas de navegación (solo desktop)
-document.querySelector(".prev-btn").addEventListener("click",function(){
-prevSlide();
-resetAutoChange();
-});
-
-document.querySelector(".next-btn").addEventListener("click",function(){
-nextSlide();
-resetAutoChange();
-});
-
-// Event listeners para los indicadores
-indicators.forEach((indicator, index) => {
-indicator.addEventListener('click', function(){
-goToSlide(index);
-resetAutoChange();
-});
-});
-
-// Touch/Swipe functionality para dispositivos móviles
-heroSection.addEventListener('touchstart', function(e) {
-if (window.innerWidth <= 768) { // Solo en dispositivos móviles
-startX = e.touches[0].clientX;
-startY = e.touches[0].clientY;
-isSwipeActive = true;
-clearInterval(autoChangeInterval); // Pausar auto-change durante swipe
-}
-}, { passive: true });
-
-heroSection.addEventListener('touchmove', function(e) {
-if (!isSwipeActive || window.innerWidth > 768) return;
-e.preventDefault(); // Prevenir scroll vertical durante swipe horizontal
-}, { passive: false });
-
-heroSection.addEventListener('touchend', function(e) {
-if (!isSwipeActive || window.innerWidth > 768) return;
-
-endX = e.changedTouches[0].clientX;
-endY = e.changedTouches[0].clientY;
-
-const deltaX = endX - startX;
-const deltaY = endY - startY;
-
-// Verificar que el swipe sea más horizontal que vertical
-if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
-if (deltaX > 0) {
-// Swipe hacia la derecha - ir a la imagen anterior
-prevSlide();
-} else {
-// Swipe hacia la izquierda - ir a la siguiente imagen
-nextSlide();
-}
-}
-isSwipeActive = false;
-resetAutoChange(); // Reiniciar auto-change después del swipe
-}, { passive: true });
-
-// Prevenir el comportamiento por defecto del swipe en el hero
-heroSection.addEventListener('touchmove', function(e) {
-if (window.innerWidth <= 768 && isSwipeActive) {
-const deltaX = Math.abs(e.touches[0].clientX - startX);
-const deltaY = Math.abs(e.touches[0].clientY - startY);
-if (deltaX > deltaY) {
-e.preventDefault();
-}
-}
-}, { passive: false });
-
-// Header functionality
-window.addEventListener('DOMContentLoaded',function(){
-const header=document.querySelector('header');
-setTimeout(function(){header.classList.add('visible');},300);
-window.addEventListener('scroll',function(){
-if(window.scrollY>50){header.classList.add('sticky');}else{header.classList.remove('sticky');}
-});
-});
-
-// Hamburger menu
-const hamburger=document.getElementById('hamburger');
-const navMenu=document.getElementById('nav-menu');
-hamburger.addEventListener('click',function(){
-hamburger.classList.toggle('active');
-navMenu.classList.toggle('active');
-});
-
-document.querySelectorAll('#nav-menu a').forEach(link=>{
-link.addEventListener('click',function(){
-hamburger.classList.remove('active');
-navMenu.classList.remove('active');
-});
-});
-
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener('click',function(e){
-e.preventDefault();
-const target=document.querySelector(this.getAttribute('href'));
-if(target){target.scrollIntoView({behavior:'smooth',block:'start'});}
-});
-});
-
-// Inicializar
-updateContent();
-startAutoChange();
-});
-</script>
-</body>
-</html>
+currentIndex=(currentIndex-1+backgroundImages.length)%backgroundImages.

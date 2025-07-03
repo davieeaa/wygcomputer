@@ -6,7 +6,7 @@
 <title>W&G COMPUTER</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{min-height:200vh;background-color:#f4f9ff}
+body{min-height:200vh;background-color:#08085c}
 header{position:fixed;top:0;left:0;width:100%;padding:10px 100px;background-color:rgba(255,255,255,.9);transition:.6s;z-index:100000;transform:translateY(-100px);opacity:0;display:flex;justify-content:space-between;align-items:center}
 .hamburger{display:none;flex-direction:column;cursor:pointer;z-index:100001}
 .hamburger span{width:25px;height:3px;background-color:#333;margin:3px 0;transition:.3s}
@@ -47,13 +47,92 @@ header.sticky ul li a{color:#fff}
 from{transform:translateY(30px);opacity:0}
 to{transform:translateY(0);opacity:1}
 }
-.services{max-width:1200px;margin:0 auto;padding:2rem 1rem;background-color:#f4f9ff;text-align:center}
-.services h1{color:#03075a;font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;text-align:center}
+
+.about-company{
+background-color:#fff;
+padding:4rem 2rem;
+margin:2rem 0;
+}
+.about-container{
+max-width:1200px;
+margin:0 auto;
+display:flex;
+align-items:center;
+gap:3rem;
+}
+.about-content{
+flex:1;
+}
+.about-content h2{
+color:#03075a;
+font-size:2.5rem;
+margin-bottom:1.5rem;
+font-weight:700;
+}
+.about-intro{
+font-size:1.2rem;
+color:#666;
+margin-bottom:2rem;
+line-height:1.6;
+}
+.about-details{
+display:flex;
+flex-direction:column;
+gap:1.5rem;
+}
+.about-item h3{
+color:#03075a;
+font-size:1.3rem;
+margin-bottom:0.5rem;
+font-weight:600;
+}
+.about-item p{
+color:#666;
+line-height:1.6;
+font-size:1rem;
+}
+.about-image{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.company-image{
+width:100%;
+max-width:580px;
+height:380px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+transition:transform 0.3s ease;
+background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:1.2rem;
+text-align:center;
+}
+.company-image:hover{
+transform:scale(1.02);
+}
+.services{max-width:1200px;margin:0 auto;padding:2rem 1rem;background-color:#08085c;text-align:center}
+.services h1{color:#f7f7f7;font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;text-align:center}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:1.5rem}
 .service{background:white;padding:1.5rem;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:transform .3s ease-in-out;text-align:center}
 .service:hover{transform:scale(1.05)}
 .service h3{color:#03075a;margin-bottom:1rem;font-size:1.1rem}
 .service p{line-height:1.6;color:#665}
+.partners-section{
+background-color:#f4f9ff;
+padding:2rem 0;
+}
+.partners-title{
+color:#03075a;
+text-align:center;
+font-size:clamp(1.5rem,4vw,2rem);
+margin-bottom:2rem;
+padding:0 1rem;
+}
 .gallery{padding:100px;display:grid;grid-template-columns:repeat(8,1fr);gap:1rem;margin-top:2rem;justify-items:center;background-color:#f4f9ff}
 .gallery img{width:100%;height:150px;object-fit:contain;border-radius:8px}
 footer{text-align:center;background-color:#08085c;color:#f4f9ff;padding:1rem 0;margin-top:2rem}
@@ -185,6 +264,36 @@ footer{padding:1rem .5rem;font-size:.9rem}
 </div>
 </section>
 
+<!-- Nueva sección Sobre Nosotros -->
+<section id="sobre-nosotros" class="about-company">
+<div class="about-container">
+<div class="about-content">
+<h2>Sobre W&G Computer</h2>
+<p class="about-intro">Somos una empresa especializada en soluciones tecnológicas integrales, comprometida con la innovación y la excelencia en cada proyecto que desarrollamos.</p>
+<div class="about-details">
+<div class="about-item">
+<h3>Nuestra Experiencia</h3>
+<p>Con años de experiencia en el mercado tecnológico, hemos desarrollado expertise en consultoría de sistemas, infraestructura informática y soluciones de seguridad.</p>
+</div>
+<div class="about-item">
+<h3>Nuestro Compromiso</h3>
+<p>Nos dedicamos a proporcionar soluciones personalizadas que impulsen el crecimiento y la eficiencia de nuestros clientes, utilizando las últimas tecnologías del mercado.</p>
+</div>
+<div class="about-item">
+<h3>Nuestra Visión</h3>
+<p>Ser la empresa líder en soluciones tecnológicas, reconocida por nuestra calidad, innovación y compromiso con la satisfacción de nuestros clientes.</p>
+</div>
+</div>
+</div>
+<div class="about-image">
+<div class="company-image">
+<img src="img/w&glocation.jpg" alt="Equipo W&G Computer" class="company-image">
+</div>
+</div>
+</div>
+</section>
+
+<!-- Nueva sección Sobre SERVICIOS -->
 <section id="servicios" class="services">
 <h1>Nuestros Servicios</h1>
 <div class="services-grid">
@@ -223,8 +332,9 @@ footer{padding:1rem .5rem;font-size:.9rem}
 </div>
 </section>
 
-<section id="nosotros" class="about">
-<h1 style="color:#03075a;text-align:center;font-size:clamp(1.5rem,4vw,2rem);margin-bottom:2rem;">Socios Comerciales</h1>
+<!-- Sección de Socios Comerciales -->
+<section id="nosotros" class="partners-section">
+<h1 class="partners-title">Socios Comerciales</h1>
 <div class="gallery">
 <img src="img/img1.png" alt="Logo Socio Comercial 1">
 <img src="img/img2.png" alt="Logo Socio Comercial 2">
